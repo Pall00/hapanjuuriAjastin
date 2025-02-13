@@ -2,7 +2,7 @@ import styled from "styled-components"
 import Header from "./components/banner/Header"
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
-import Laskuri from "./components/views/LaskuriTest"
+import Laskuri from "./components/views/Laskuri"
 import Ohje from './components/views/Ohje';
 import Ajastin from './components/views/Ajastin';
 import Info from './components/views/Info';

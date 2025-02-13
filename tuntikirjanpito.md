@@ -4,15 +4,24 @@
 | :----:|:-----| :-----|
 | 11.2. | 4    | tutustuminen styled-componentsiin|
 | 12.2. | 6    | käyttöliittymän alustava toteutus|
-| 13.2. | 3    | käyttäjänhallinta, tallennus tiedostoon, rakenteen refaktorointi |
-|       | 2    | sovelluksen rakenteen refaktorointi |
-|       | 2    | määrittelydokumentti |
+| 13.2. | 8    | laskuriin sliderien teko ja muita arvojen laskuja|
 | 14.2. | 4    | arkkitehtuurikuvaus |
 |       | 5    | testaus |
 | 15.3.  | 1    | koodin refaktorointia |
 | 16.3.  | 2    | arkkitehtuurikuvauksen tarkennus |
 |       | 1    | käyttöohje |
-| 6.3.  | 2    | testaus |
+| 17.3.  | 2    | testaus |
+| 18.3.  | 2    | testaus |
+| 19.3.  | 2    | testaus |
+| 20.3.  | 2    | testaus |
+| 21.3.  | 2    | testaus |
+| 22.3.  | 2    | testaus |
+| 23.3.  | 2    | testaus |
+| 24.3.  | 2    | testaus |
+| 25.3.  | 2    | testaus |
+| 26.3.  | 2    | testaus |
+| 27.3.  | 2    | testaus |
+| 28.3.  | 2    | testaus |
 
 
 
