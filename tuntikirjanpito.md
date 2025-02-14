@@ -5,8 +5,7 @@
 | 11.2. | 4    | tutustuminen styled-componentsiin|
 | 12.2. | 6    | käyttöliittymän alustava toteutus|
 | 13.2. | 8    | laskuriin sliderien teko ja muita arvojen laskuja|
-| 14.2. | 4    | arkkitehtuurikuvaus |
-|       | 5    | testaus |
+| 14.2. | 6    | Ajastin sivun alustavaa toteutusta |
 | 15.3.  | 1    | koodin refaktorointia |
 | 16.3.  | 2    | arkkitehtuurikuvauksen tarkennus |
 |       | 1    | käyttöohje |
