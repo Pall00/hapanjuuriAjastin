@@ -6,20 +6,18 @@ const Ajastin = () => {
   const [currentStepIndex, setCurrentStepIndex] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
   const [isRunning, setIsRunning] = useState(false)
+  const [completedSteps, setCompletedSteps] = useState([])
   
-
-
-
   const breadMakingSteps = [
-    {name: "Jauho&Vesi", duration: 1 * 60},
-    {name: "Juuri&Taikina + venytys ja taittelu ", duration: 1* 60},
-    {name: "Coil fold 1 kerta", duration: 1*60},
-    {name: "Coil fold 2 kerta", duration: 1*60},
-    {name: "Coil fold 3 kerta", duration: 1*60},
-    {name: "Coil fold 4 kerta", duration: 1*60},
-    {name: "Taikinan kohotus", duration: 1*60},
-    {name: "Esimuotoilu ja kylmäkohotus", duration: 1*60},
-    {name: "Taikinan viilto ja paistaminen", duration: 1*60}
+    {name: "Jauho&Vesi", duration: 45 * 60},
+    {name: "Juuri&Taikina + venytys ja taittelu ", duration: 30* 60},
+    {name: "Coil fold 1 kerta", duration: 30*60},
+    {name: "Coil fold 2 kerta", duration: 30*60},
+    {name: "Coil fold 3 kerta", duration: 30*60},
+    {name: "Coil fold 4 kerta", duration: 30*60},
+    {name: "Taikinan kohotus", duration: 240*60},
+    {name: "Esimuotoilu ja kylmäkohotus", duration: 480*60},
+    {name: "Taikinan viilto ja paistaminen", duration: 20*60}
 ]
 
 const formatTime = (seconds) => {
@@ -41,7 +39,6 @@ useEffect(()=> {
   return () => clearInterval(interval);
 },[isRunning,currentTime]);
 
-
 const startTimer = () => {
   if (currentTime > 0) {
     setIsRunning(true);
@@ -55,6 +52,22 @@ const stopTimer = () => {
 const resetTimer = () => {
   setIsRunning(false)
   setCurrentTime(breadMakingSteps[currentStepIndex].duration)
+}
+
+const handleStepSelect = (index) => {
+  setIsRunning(false)
+  setCurrentStepIndex(index)
+  setCurrentTime(breadMakingSteps[index].duration)
+}
+
+useEffect(() => {
+  setCompletedSteps(new Array(breadMakingSteps.length).fill(false))
+}, [])
+
+const toggleStepCompletion = (index) => {
+  const newCompletedSteps = [...completedSteps]
+  newCompletedSteps[index] = !newCompletedSteps[index]
+  setCompletedSteps(newCompletedSteps)
 }
 
   return (
@@ -85,25 +98,30 @@ const resetTimer = () => {
         </>
       )}
     </ButtonContainer>
-      
-
-    <StepsProgress>
+      <StepsProgress>
         {breadMakingSteps.map((step, index) => (
           <StepRow key={index}>
-            <Step active={index === currentStepIndex}>
+            <Step 
+            onClick={() => handleStepSelect(index)}
+            active={index === currentStepIndex}
+            completed={completedSteps[index]}
+            >
               {step.name} ({formatTime(step.duration)})
             </Step>
+            <CompleteButton
+              onClick={() => toggleStepCompletion(index)}
+              completed={completedSteps[index]}
+            >
+              {completedSteps[index] ? '✓ Valmis' : 'Merkitse valmiiksi!'}
+            </CompleteButton>
           </StepRow>
         ))}
       </StepsProgress>
-
 </Container>
-
   );
 };
 
 export default Ajastin;
-
 
 const Container = styled.div`
   display: flex;
@@ -208,7 +226,6 @@ cursor: pointer;
 
 }
 `
-
 const ResetButton = styled.button `
 background-color:rgb(148, 142, 89);
 color: rgb(255, 255, 255);
@@ -219,5 +236,20 @@ cursor: pointer;
 &:hover{
   background-color:rgb(114, 109, 60);
 }
-`;
-
+`
+const CompleteButton = styled.button`
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: ${props => 
+    props.completed ? 'rgb(76, 175, 80)' : 'rgb(255, 255, 255)'};
+  color: ${props => 
+    props.completed ? 'rgb(255, 255, 255)' : 'rgb(76, 175, 80)'};
+  border: 1px solid rgb(76, 175, 80);
+  transition: all 0.3s;
+  
+  &:hover {
+    background-color: ${props => 
+      props.completed ? 'rgb(69, 160, 73)' : 'rgb(232, 245, 233)'};
+  }
+`
