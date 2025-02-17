@@ -8,7 +8,7 @@
 | 14.2. | 6    | Ajastin sivun alustavaa toteutusta |
 | 15.3. | 6    | Kello ajastimeen|
 | 16.3. | 8    | Ajastin näkymän parantelua|
-| 17.3. | 2    | testaus |
+| 17.3. | 5    | Laskurin ulkoasun ja koodin päivittelyä|
 | 18.3. | 2    | testaus |
 | 19.3. | 2    | testaus |
 | 20.3. | 2    | testaus |
