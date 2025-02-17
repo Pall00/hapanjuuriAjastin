@@ -9,7 +9,8 @@
 | 15.3. | 6    | Kello ajastimeen|
 | 16.3. | 8    | Ajastin näkymän parantelua|
 | 17.3. | 5    | Laskurin ulkoasun ja koodin päivittelyä|
-| 18.3. | 2    | testaus |
+|       | 3    | Headerin päivittelyä ja muuta pientä |
+| 18.3. | 3    | testaus |
 | 19.3. | 2    | testaus |
 | 20.3. | 2    | testaus |
 | 21.3. | 2    | testaus |

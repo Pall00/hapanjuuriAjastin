@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import Header from "./components/banner/Header"
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-
 import Laskuri from "./components/views/Laskuri"
 import Ohje from './components/views/Ohje'
 import Ajastin from './components/views/Ajastin'
@@ -20,7 +19,6 @@ const App = () => {
           <Route path="/ajastin" element={<Ajastin />} />
           <Route path="/" element={<Info />} />
         </Routes>
-        
       </Container>
     </Router>
   )

@@ -7,11 +7,9 @@ const Info = () => {
         <div>
           <h2>Info</h2>
           <p>Tämän sivun tarkoitus on auttaa sinua hapanjuurileivän valmistuksessa.</p>
-          
         </div>
       </Information>
     </Container>
-   
   )
 }
 
@@ -19,12 +17,13 @@ export default Info;
 
 
 const Container = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
-    margin: 0 auto;
-    padding: 1.5rem 0;
+  align-items: center;
+  justify-content: space-between;
+  width: 40%;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+  min-width: 320px;
+  margin-top: calc(80px + ${window.innerHeight > 667 ? '0' : '2rem'});
     
   `
   const Information = styled.div`

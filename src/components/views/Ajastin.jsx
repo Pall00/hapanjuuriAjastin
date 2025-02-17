@@ -2,12 +2,7 @@ import {useState, useEffect} from "react"
 import styled from "styled-components"
 
 const Ajastin = () => {
-  
-  const [currentStepIndex, setCurrentStepIndex] = useState(0)
-  const [currentTime, setCurrentTime] = useState(0)
-  const [isRunning, setIsRunning] = useState(false)
-  const [completedSteps, setCompletedSteps] = useState([])
-  
+
   const breadMakingSteps = [
     {name: "Jauho&Vesi", duration: 45 * 60},
     {name: "Juuri&Taikina + venytys ja taittelu ", duration: 30* 60},
@@ -20,7 +15,12 @@ const Ajastin = () => {
     {name: "Taikinan viilto ja paistaminen", duration: 20*60}
 ]
 
-const formatTime = (seconds) => {
+  const [currentStepIndex, setCurrentStepIndex] = useState(0)
+  const [currentTime, setCurrentTime] = useState(()=> breadMakingSteps[currentStepIndex].duration);
+  const [isRunning, setIsRunning] = useState(false)
+  const [completedSteps, setCompletedSteps] = useState([])
+  
+ const formatTime = (seconds) => {
   const hours = Math.floor(seconds / 3600)
   const minutes = Math.floor((seconds % 3600) / 60)
   const secs = seconds % 60
@@ -131,6 +131,7 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 2rem 0;
   gap: 2rem;
+  margin-top: calc(80px + ${window.innerHeight > 667 ? '0' : '2rem'});
 `;
 
 const Information = styled.div`

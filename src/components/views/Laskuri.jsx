@@ -112,6 +112,7 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 1.5rem 0;
   min-width: 320px;
+  margin-top: calc(80px + ${window.innerHeight > 667 ? '0' : '2rem'});
 `;
 
 const SliderContainer = styled.div`
