@@ -6,21 +6,23 @@
 | 12.2. | 6    | käyttöliittymän alustava toteutus|
 | 13.2. | 8    | laskuriin sliderien teko ja muita arvojen laskuja|
 | 14.2. | 6    | Ajastin sivun alustavaa toteutusta |
-| 15.3. | 6    | Kello ajastimeen|
-| 16.3. | 8    | Ajastin näkymän parantelua|
-| 17.3. | 5    | Laskurin ulkoasun ja koodin päivittelyä|
+| 15.2. | 6    | Kello ajastimeen|
+| 16.2. | 8    | Ajastin näkymän parantelua|
+| 17.2. | 5    | Laskurin ulkoasun ja koodin päivittelyä|
 |       | 3    | Headerin päivittelyä ja muuta pientä |
-| 18.3. | 6    | Ohje sivun tekoa, ulkoasun pohdintaa|
-| 19.3. | 2    | testaus |
-| 20.3. | 2    | testaus |
-| 21.3. | 2    | testaus |
-| 22.3. | 2    | testaus |
-| 23.3. | 2    | testaus |
-| 24.3. | 2    | testaus |
-| 25.3. | 2    | testaus |
-| 26.3. | 2    | testaus |
-| 27.3. | 2    | testaus |
-| 28.3. | 2    | testaus |
+| 18.2. | 6    | Ohje sivun tekoa, ulkoasun pohdintaa|
+|       | 1    | Laskuri sivun ulkoasun parantelua| 
+|       | 6    | Ajastimen ominaisuuksien lisäilyä ja mobiili käytettävyyttä parannettu|
+| 19.2. | 2    | testaus |
+| 20.2. | 2    | testaus |
+| 21.2. | 2    | testaus |
+| 22.2. | 2    | testaus |
+| 23.2. | 2    | testaus |
+| 24.2. | 2    | testaus |
+| 25.2. | 2    | testaus |
+| 26.2. | 2    | testaus |
+| 27.2. | 2    | testaus |
+| 28.2. | 2    | testaus |
 
 
 

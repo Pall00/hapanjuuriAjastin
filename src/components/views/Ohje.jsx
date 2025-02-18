@@ -43,6 +43,7 @@ const Ohje = () => {
       <Section>
         <SectionTitle>Valmistusohjeet</SectionTitle>
         
+        <InstructionSteps>  
         <StepItem>
           <StepHeader>
             <StepNumber>1</StepNumber>
@@ -172,7 +173,8 @@ const Ohje = () => {
             Siirrä leipä ritilälle jäähtymään vähintään 15 minuutiksi ennen viipalointia. Leivän pohjan pitäisi kuulostaa ontolta, kun sitä napautetaan. Nosta uunin lämpötila takaisin 260°C:seen, puhdista pata ja toista tämä prosessi toisen leivän kanssa.
           </StepContent>
         </StepItem>
-        
+        </InstructionSteps>
+
         <TipBox>
           <TipHeader>
             <TipIcon>💡</TipIcon>
@@ -201,13 +203,24 @@ const Container = styled.div`
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   margin-top: 100px;
+
+  @media (max-width: 768px) {
+    margin-top: 80px;
+    padding: 1rem 0.5rem;
+    border-radius: 8px;
+  }
 `;
 
 const Header = styled.div`
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   border-bottom: 2px solid #E7DFC6;
   padding-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
 `;
 
 const Title = styled.h1`
@@ -215,6 +228,11 @@ const Title = styled.h1`
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
   font-weight: 700;
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const RecipeBanner = styled.div`
@@ -222,21 +240,40 @@ const RecipeBanner = styled.div`
   justify-content: center;
   gap: 2rem;
   flex-wrap: wrap;
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const BannerItem = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+
+  @media (max-width: 480px) {
+    width: 100%;
+    justify-content: center;
+  }
 `;
 
 const BannerIcon = styled.span`
   font-size: 1.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
 `;
 
 const BannerText = styled.p`
   font-size: 1.1rem;
   color: #5C5545;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const Strong = styled.span`
@@ -244,7 +281,13 @@ const Strong = styled.span`
 `;
 
 const Section = styled.section`
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
+  padding: 0 1rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -254,10 +297,24 @@ const SectionTitle = styled.h2`
   font-weight: 600;
   border-bottom: 1px solid #E7DFC6;
   padding-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const IngredientGroup = styled.div`
-  margin-bottom: 1.5rem;
+   margin-bottom: 1.5rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+  @media (max-width: 768px) {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const GroupTitle = styled.h3`
@@ -265,17 +322,27 @@ const GroupTitle = styled.h3`
   font-size: 1.3rem;
   margin-bottom: 0.75rem;
   font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const IngredientList = styled.ul`
   list-style-type: none;
   padding-left: 1rem;
+
+  @media (max-width: 768px) {
+    padding-left: 0.5rem;
+  }
 `;
 
 const IngredientItem = styled.li`
   margin-bottom: 0.5rem;
   position: relative;
   padding-left: 1.5rem;
+  color: #5C5545;
   
   &:before {
     content: "•";
@@ -284,20 +351,45 @@ const IngredientItem = styled.li`
     color: #8B7D5B;
     font-weight: bold;
   }
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    padding-left: 1rem;
+    margin-bottom: 0.4rem;
+  }
+`;
+
+const InstructionSteps = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    gap: 0.75rem;
+  }
 `;
 
 const StepItem = styled.div`
-  margin-bottom: 2rem;
-  background-color: #fff;
+  background-color: white;
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
 const StepHeader = styled.div`
   display: flex;
   align-items: center;
+  gap: 1rem;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
 `;
 
 const StepNumber = styled.div`
@@ -310,7 +402,12 @@ const StepNumber = styled.div`
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  margin-right: 1rem;
+  
+  @media (max-width: 768px) {
+    height: 1.75rem;
+    width: 1.75rem;
+    font-size: 0.9rem;
+  }
 `;
 
 const StepTitle = styled.h3`
@@ -318,12 +415,21 @@ const StepTitle = styled.h3`
   font-size: 1.3rem;
   font-weight: 600;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const StepContent = styled.p`
   color: #5C5545;
   font-size: 1rem;
   line-height: 1.7;
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
 `;
 
 const TipBox = styled.div`
@@ -332,17 +438,31 @@ const TipBox = styled.div`
   border-radius: 8px;
   padding: 1.5rem;
   margin-top: 2.5rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    margin-top: 1.5rem;
+  }
 `;
 
 const TipHeader = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 0.75rem;
+  }
 `;
 
 const TipIcon = styled.span`
   font-size: 1.5rem;
   margin-right: 0.75rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+  }
 `;
 
 const TipTitle = styled.h4`
@@ -350,10 +470,19 @@ const TipTitle = styled.h4`
   font-size: 1.2rem;
   font-weight: 700;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const TipContent = styled.p`
   color: #8C7E58;
   font-size: 1rem;
   line-height: 1.7;
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
 `;

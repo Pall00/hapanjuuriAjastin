@@ -30,11 +30,12 @@ const calculateWaterPersent = () => {
         <Title>Hapanjuuri ainesten laskuri</Title>
       </Header>
 
-      <SliderContainer>
-        <SliderStyle>
+      <MainContent>
+      <SliderSection>
+        <SliderCard>
           <LabelContainer>
           <LabelIcon>🌾</LabelIcon>
-            <label>Jauhot (g)</label>
+          <LabelText>Jauhot (g)</LabelText>
           </LabelContainer>
           <SliderWrapper>
             <StyledSlider
@@ -46,12 +47,12 @@ const calculateWaterPersent = () => {
             />
             <Value>{flourAmount} g</Value>
           </SliderWrapper>
-        </SliderStyle>
+        </SliderCard>
         
-        <SliderStyle>
+        <SliderCard>
           <LabelContainer>
             <LabelIcon>💧</LabelIcon>
-            <label>Vesi (g)</label>
+            <LabelText>Vesi (g)</LabelText>
           </LabelContainer>
           <SliderWrapper>
             <StyledSlider
@@ -63,12 +64,12 @@ const calculateWaterPersent = () => {
             />
             <Value>{waterAmount} g</Value>
           </SliderWrapper>
-        </SliderStyle>
+        </SliderCard>
 
-      <SliderStyle>
+      <SliderCard>
         <LabelContainer>
           <LabelIcon>🍞</LabelIcon>
-          <label>Juuri (g)</label>
+          <LabelText>Juuri (g)</LabelText>
         </LabelContainer>
         <SliderWrapper>
           <StyledSlider
@@ -80,24 +81,27 @@ const calculateWaterPersent = () => {
           />
           <Value>{starterAmount} g</Value>
         </SliderWrapper>
-      </SliderStyle>
-
+      </SliderCard>
+      </SliderSection>
+      
       <ResultsCard>
-        <ResultRow>
-          <h3>Taikinan paino:</h3>
-          <p>{calculateTotalDough()} g</p>
-        </ResultRow>
-        <ResultRow>
-          <h3>Vesiprosentti:</h3>
-          <p>{calculateWaterPersent()} %</p>
-        </ResultRow>
-        <ResultRow>
-          <h3>Suolanmäärä:</h3>
-          <p>{saltAmount()} g</p>
-        </ResultRow>
+      <ResultsGrid>
+        <ResultItem>
+          <ResultLabel>Taikinan paino:</ResultLabel>
+          <ResultValue>{calculateTotalDough()} g</ResultValue>
+        </ResultItem>
+        <ResultItem>
+          <ResultLabel>Vesiprosentti:</ResultLabel>
+          <ResultValue>{calculateWaterPersent()} %</ResultValue>
+        </ResultItem>
+        <ResultItem>
+          <ResultLabel>Suolanmäärä:</ResultLabel>
+          <ResultValue>{saltAmount()} g</ResultValue>
+        </ResultItem>
+        </ResultsGrid>
         <ResetButton onClick={resetSliders}>Nollaa asetukset</ResetButton>
       </ResultsCard>
-    </SliderContainer>
+      </MainContent>
   </Container>
   );
 };
@@ -108,63 +112,114 @@ const Container = styled.div`
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1.5rem;
   font-family: 'Helvetica Neue', sans-serif;
-  background-color:rgb(251, 249, 244);
+  background-color: rgb(251, 249, 244);
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   margin-top: 100px;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    margin-top: 80px;
+    border-radius: 8px;
+  }
 `;
 
 const Header = styled.div`
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   border-bottom: 2px solid rgb(231, 223, 198);
   padding-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
 `;
 
 const Title = styled.h2`
-  color:rgb(139, 125, 91);
+  color: rgb(139, 125, 91);
   font-size: 2.2rem;
   margin: 0;
   font-weight: 700;
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+  }
 `;
 
-const SliderContainer = styled.div`
-  width: 90%;
-  margin: 0.5rem auto;      
+const MainContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+  }
+`;
+
+const SliderSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
+`;
+
+const SliderCard = styled.div`
+  padding: 1.5rem;
+  background-color: rgb(245, 239, 217);
+  border: 1px solid rgb(231, 223, 198);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
 const LabelContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 0.75rem;
-  color:rgb(139, 125, 91);
-  font-weight: 600;
-  font-size: 1.1rem;
+  margin-bottom: 1rem;
 `;
 
 const LabelIcon = styled.span`
   font-size: 1.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
 `;
 
-const SliderStyle = styled.div`
-  padding: 1.5rem;
-  background-color: rgb(245, 239, 217);
-  border: 1px solid rgb(231, 223, 198);
-  border-radius: 8px;
-  margin: 1rem 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    
-  `
-  const StyledSlider = styled.input.attrs(props => ({
-    style:{
-      background: `linear-gradient(to right, rgb(231, 197, 124) ${(props.value - props.min) / (props.max - props.min) * 100}%,rgb(224, 224, 224) ${(props.value - props.min) / (props.max - props.min) * 100}%)`
-    }
-  }))`
+const LabelText = styled.label`
+  color: rgb(139, 125, 91);
+  font-weight: 600;
+  font-size: 1.1rem;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+`;
+
+const SliderWrapper = styled.div`
+  position: relative;
+  padding: 0.5rem 0;
+  padding-top: 1.5rem;
+`;
+
+const StyledSlider = styled.input.attrs(props => ({
+  style: {
+    background: `linear-gradient(to right, rgb(231, 197, 124) ${(props.value - props.min) / (props.max - props.min) * 100}%,
+                rgb(224, 224, 224) ${(props.value - props.min) / (props.max - props.min) * 100}%)`
+  }
+}))`
   width: 100%;
-  height: 15px;
+  height: 12px;
   outline: none;
   -webkit-appearance: none;
   border-radius: 10px;
@@ -173,8 +228,8 @@ const SliderStyle = styled.div`
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 25px;
-    height: 25px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     background: rgb(139, 125, 91);
     cursor: pointer;
@@ -187,53 +242,40 @@ const SliderStyle = styled.div`
   }
 
   &::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
+    width: 28px;
+    height: 28px;
     border: none;
     border-radius: 50%;
     background: rgb(139, 125, 91);
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   }
-`;
 
+  @media (max-width: 768px) {
+    height: 10px;
+
+    &::-webkit-slider-thumb {
+      width: 24px;
+      height: 24px;
+    }
+
+    &::-moz-range-thumb {
+      width: 24px;
+      height: 24px;
+    }
+  }
+`;
 
 const Value = styled.span`
   position: absolute;
   right: 0;
-  top: -1.5rem;
+  top: -0.5rem;
   color: rgb(139, 125, 91);
   font-weight: 600;
   font-size: 1.1rem;
-`;
 
-const SliderWrapper = styled.div`
-  position: relative;
-  padding: 0.5rem 0;
-
-`;
-
-const ResetButton = styled.button`
-  background-color:rgb(139, 125, 91);
-  color: rgb(255, 255, 255);
-  padding: .8rem 1.2rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1.3rem;
-  margin-top: 0.5rem;
-  width: 100%;
-  border: none;
-  transition: all 0.2s ease;
-  font-weight: 600;
-
-  &:hover {
-    background-color:rgb(117, 106, 78);
-    transform: translateY(-2px);
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-  }
-
-  &:active {
-    transform: translateY(0);
+  @media (max-width: 768px) {
+    font-size: 1rem;
   }
 `;
 
@@ -241,35 +283,84 @@ const ResultsCard = styled.div`
   background-color: rgb(245, 239, 217);
   border: 1px solid rgb(231, 223, 198);
   border-radius: 8px;
-  padding:1.5rem;
-  margin-top: 2rem;
+  padding: 1.5rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
-const ResultRow = styled.div`
+const ResultsGrid = styled.div`
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+`;
+
+const ResultItem = styled.div`
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid rgb(231, 223, 198);
 
-  &:last-of-type {
-    margin-bottom: 1.5rem;
+  &:last-child {
     border-bottom: none;
+    padding-bottom: 0;
+  }
+`;
+
+const ResultLabel = styled.h3`
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: rgb(139, 125, 91);
+  margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+`;
+
+const ResultValue = styled.p`
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: rgb(139, 125, 91);
+  margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+`;
+
+const ResetButton = styled.button`
+  background-color: rgb(139, 125, 91);
+  color: rgb(255, 255, 255);
+  padding: 0.8rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  width: 100%;
+  border: none;
+  transition: all 0.2s ease;
+  font-weight: 600;
+
+  &:hover {
+    background-color: rgb(117, 106, 78);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
   }
 
-  h3 {
-    font-weight: 600;
-    font-size: 1.2rem;
-    color:rgb(139, 125, 91);
-    margin: 0;
+  &:active {
+    transform: translateY(0);
   }
 
-  p {
-    font-weight: 600;
-    font-size: 1.2rem;
-    color:rgb(139, 125, 91);
-    margin: 0;
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    padding: 0.6rem 1rem;
   }
 `;
