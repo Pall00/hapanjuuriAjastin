@@ -10,7 +10,7 @@
 | 16.3. | 8    | Ajastin näkymän parantelua|
 | 17.3. | 5    | Laskurin ulkoasun ja koodin päivittelyä|
 |       | 3    | Headerin päivittelyä ja muuta pientä |
-| 18.3. | 3    | testaus |
+| 18.3. | 6    | Ohje sivun tekoa, ulkoasun pohdintaa|
 | 19.3. | 2    | testaus |
 | 20.3. | 2    | testaus |
 | 21.3. | 2    | testaus |
