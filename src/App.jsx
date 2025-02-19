@@ -5,9 +5,12 @@ import Laskuri from "./components/views/Laskuri"
 import Ohje from './components/views/Ohje'
 import Ajastin from './components/views/Ajastin'
 import Info from './components/views/Info'
+import Auth from './components/auth/Auth'
+import { AuthProvider } from './contexts/AuthContext'
 
 const App = () => {
   return (
+  <AuthProvider>
     <Router>
       <Container>
         <Banner>
@@ -18,9 +21,11 @@ const App = () => {
           <Route path="/ohje" element={<Ohje />} />
           <Route path="/ajastin" element={<Ajastin />} />
           <Route path="/" element={<Info />} />
+          <Route path="/auth" element={<Auth />} />
         </Routes>
       </Container>
     </Router>
+  </AuthProvider>
   )
 }
 

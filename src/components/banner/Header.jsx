@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
 import styled from "styled-components"
 import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
+import Notification from '../common/Notification';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { user, logout } = useAuth();
+  const [showNotification, setShowNotification] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +21,15 @@ const Header = () => {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      setShowNotification(true);
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
   };
 
 
@@ -37,7 +50,18 @@ return (
             <NavLink to="/ajastin" $isActive={location.pathname === '/ajastin'} onClick={() => setIsMobileMenuOpen(false)}>Ajastin</NavLink>
             <NavLink to="/ohje" $isActive={location.pathname === '/ohje'} onClick={() => setIsMobileMenuOpen(false)}>Ohje</NavLink>
             <NavLink to="/" $isActive={location.pathname === '/'} onClick={() => setIsMobileMenuOpen(false)}>Info</NavLink>
+            {user ? (
+                  <AuthButton onClick={handleLogout}>Kirjaudu ulos</AuthButton>
+                    ) : (
+                  <NavLink to="/auth" $isActive={location.pathname === '/auth'}>Kirjaudu</NavLink>
+                    )}
         </Nav>
+          {showNotification && (
+            <Notification 
+            message="Olet kirjautunut ulos"
+            onClose={() => setShowNotification(false)}
+              />
+          )}
     </Container>
     </HeaderContainer>
 );
@@ -184,6 +208,30 @@ const NavLink = styled(RouterLink)`
       font-size: 1.4rem;
       width: 100%;
       text-align: center;
+  }
+`;
+
+const AuthButton = styled.button`
+  text-decoration: none;
+  color: #8B7D5B;
+  font-weight: 500;
+  font-size: 1.8rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: none;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  
+  &:hover {
+    color: #8B7D5B;
+    background-color: rgba(139, 125, 91, 0.08);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+    width: 100%;
+    text-align: center;
   }
 `;
 

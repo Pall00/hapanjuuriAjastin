@@ -13,7 +13,7 @@
 | 18.2. | 6    | Ohje sivun tekoa, ulkoasun pohdintaa|
 |       | 1    | Laskuri sivun ulkoasun parantelua| 
 |       | 6    | Ajastimen ominaisuuksien lisäilyä ja mobiili käytettävyyttä parannettu|
-| 19.2. | 2    | testaus |
+| 19.2. | 9    | Firebasen lisäys ja kirjautuminen |
 | 20.2. | 2    | testaus |
 | 21.2. | 2    | testaus |
 | 22.2. | 2    | testaus |

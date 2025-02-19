@@ -118,7 +118,7 @@ return (
         </TotalSteps>
       </TimerSection>
 
-      <ButtonContainer>
+      <ButtonContainer> 
       {isRunning ? (
         <>
         <StopButton onClick={stopTimer}>Stop</StopButton>
@@ -126,7 +126,7 @@ return (
         </>
       ) : (
         <>
-            <StartButton onClick={startTimer} disable={currentTime === 0}>Aloita</StartButton>        
+            <StartButton onClick={startTimer} disabled={currentTime === 0}>Aloita</StartButton>        
             <ResetButton onClick={resetTimer}>Nollaa</ResetButton>
         </>
       )}

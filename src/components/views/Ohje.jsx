@@ -23,7 +23,7 @@ const Ohje = () => {
         <IngredientGroup>
           <GroupTitle>Juurta ja esitaikinaa varten:</GroupTitle>
           <IngredientList>
-            <IngredientItem>1000 grammaa valkoisista vehnäjauhoja</IngredientItem>
+            <IngredientItem>1000 grammaa valkoisia vehnäjauhoja</IngredientItem>
             <IngredientItem>1000 grammaa täysjyvävehnäjauhoja</IngredientItem>
           </IngredientList>
         </IngredientGroup>
@@ -32,8 +32,8 @@ const Ohje = () => {
           <GroupTitle>Leipää varten:</GroupTitle>
           <IngredientList>
             <IngredientItem>200 grammaa esitaikinaa</IngredientItem>
-            <IngredientItem>900 grammaa valkoisista vehnäjauhoja</IngredientItem>
-            <IngredientItem>100 grammaa täysjyvävehnäjauhoja, sekä lisää pölytykseen</IngredientItem>
+            <IngredientItem>900 grammaa valkoisia vehnäjauhoja</IngredientItem>
+            <IngredientItem>100 grammaa täysjyvävehnäjauhoja</IngredientItem>
             <IngredientItem>20 grammaa hienoa merisuolaa</IngredientItem>
             <IngredientItem>100 grammaa riisijauhoja</IngredientItem>
           </IngredientList>
@@ -50,7 +50,7 @@ const Ohje = () => {
             <StepTitle>Valmista juuri</StepTitle>
           </StepHeader>
           <StepContent>
-            Yhdistä 1000 grammaa valkoisista vehnäjauhoja 1000 gramman täysjyvävehnäjauhojen kanssa. Laita 100 grammaa lämmintä vettä (noin 26-27°C) pieneen purkkiin tai astiaan ja lisää 100 grammaa jauhoseosta. Sekoita sormilla, kunnes seos on täysin tasainen ja koostumukseltaan paksun taikinan kaltainen. Peitä pyyheliinalla ja anna seistä huoneenlämmössä, kunnes seos alkaa kuplia ja kohota, 2-3 päivää.
+            Yhdistä 1000 grammaa valkoisia vehnäjauhoja 1000 gramman täysjyvävehnäjauhojen kanssa. Laita 100 grammaa lämmintä vettä (noin 26-27°C) pieneen purkkiin tai astiaan ja lisää 100 grammaa jauhoseosta. Sekoita sormilla, kunnes seos on täysin tasainen ja koostumukseltaan paksun taikinan kaltainen. Peitä pyyheliinalla ja anna seistä huoneenlämmössä, kunnes seos alkaa kuplia ja kohota, 2-3 päivää.
           </StepContent>
         </StepItem>
         
@@ -60,7 +60,7 @@ const Ohje = () => {
             <StepTitle>Aloita säännöllinen ruokinta</StepTitle>
           </StepHeader>
           <StepContent>
-            Kun juuri alkaa osoittaa aktiivisuuden merkkejä, aloita säännöllinen ruokinta. Pidä juuri huoneenlämmössä ja samaan aikaan joka päivä heitä pois 80 prosenttia juuresta ja ruoki jäljellä olevaa juuri yhtä suurilla osilla lämmintä vettä ja valkoinen-täysjyvä jauhoseosta (50 grammaa kumpaakin on riittävä). Kun juuri alkaa nousta ja laskea ennustettavasti ja saa hieman happaman tuoksun, se on valmis; tämä kestää noin 1 viikon. (Säilytä loput jauhoseoksesta esitaikinaa varten.)
+            Kun juuri alkaa osoittaa aktiivisuuden merkkejä, aloita säännöllinen ruokinta. Pidä juuri huoneenlämmössä ja samaan aikaan joka päivä heitä pois 80 prosenttia juuresta ja ruoki jäljellä olevaa juuri yhtä suurilla osilla lämmintä vettä ja valkoinen-täysjyvä jauhoseosta (50 grammaa kumpaakin riittää). Kun juuri alkaa nousta ja laskea ennustettavasti ja saa hieman happaman tuoksun, se on valmis; tämä kestää noin 1 viikon. (Säilytä loput jauhoseoksesta esitaikinaa varten.)
           </StepContent>
         </StepItem>
         
@@ -80,7 +80,7 @@ const Ohje = () => {
             <StepTitle>Valmista taikina</StepTitle>
           </StepHeader>
           <StepContent>
-            Isossa kulhossa yhdistä 200 grammaa esitaikinaa 700 gramman lämpimän veden kanssa ja sekoita tasaiseksi. (Säilytä loput esitaikinasta tulevia leipiä varten; katso huomautus alla.)
+            Isossa kulhossa yhdistä 200 grammaa esitaikinaa 700 gramman lämpimän veden kanssa ja sekoita tasaiseksi. (Säilytä loput esitaikinasta tulevia leipiä varten; katso huomautus lopussa.)
           </StepContent>
         </StepItem>
         
@@ -90,7 +90,7 @@ const Ohje = () => {
             <StepTitle>Lisää jauhot</StepTitle>
           </StepHeader>
           <StepContent>
-            Lisää kulhoon 900 grammaa valkoisista vehnäjauhoja ja 100 grammaa täysjyvävehnäjauhoja ja käytä käsiäsi sekoittaaksesi, kunnes kuivia jauhojen jälkiä ei ole näkyvissä. Taikina on tahmeaa ja epätasaista. Peitä kulho pyyheliinalla ja anna taikinan levätä 25-40 minuuttia huoneenlämmössä.
+            Lisää kulhoon 900 grammaa valkoisia vehnäjauhoja ja 100 grammaa täysjyvävehnäjauhoja ja käytä käsiäsi sekoittaaksesi, kunnes kuivia jauhojen jälkiä ei ole näkyvissä. Taikina on tahmeaa ja epätasaista. Peitä kulho pyyheliinalla ja anna taikinan levätä 25-40 minuuttia huoneenlämmössä.
           </StepContent>
         </StepItem>
         
@@ -110,7 +110,7 @@ const Ohje = () => {
             <StepTitle>Kohota ja taittele</StepTitle>
           </StepHeader>
           <StepContent>
-            Peitä taikina pyyheliinalla ja siirrä lämpimään ympäristöön, ihanteellisesti 24-27°C (kuten ikkunan lähelle aurinkoisessa huoneessa tai sammutetun uunin sisälle). Anna taikinan nousta 30 minuuttia. Taittele taikina kastamalla käsi veteen, tarttumalla taikinan alaosaan yhdestä neljänneksestä ja venyttämällä se taikinan muun osan päälle. Toista tämä toiminta vielä 3 kertaa, kääntäen kulhoa neljänneskierroksen jokaisen taitoksen jälkeen. Tee tämä joka puolen tunnin välein 2,5 tunnin ajan (yhteensä 3 tuntia). Taikinan pitäisi olla ilmava ja kasvaa tilavuudeltaan 20-30 prosenttia. Jos ei, jatka kohotusta ja taittelua tunnin verran lisää.
+            Peitä taikina pyyheliinalla ja siirrä lämpimään ympäristöön, ihanteellisesti 24-27°C (kuten ikkunan lähelle aurinkoisessa huoneessa tai sammutetun uunin sisälle valo päällä). Anna taikinan nousta 30 minuuttia. Taittele taikina kastamalla käsi veteen, tarttumalla taikinan alaosaan yhdestä neljänneksestä ja venyttämällä se taikinan muun osan päälle. Toista tämä toiminta vielä 3 kertaa, kääntäen kulhoa neljänneskierroksen jokaisen taitoksen jälkeen. Tee tämä joka puolen tunnin välein 2,5 tunnin ajan (yhteensä 3 tuntia). Taikinan pitäisi olla ilmava ja kasvaa tilavuudeltaan 20-30 prosenttia. Jos ei, jatka kohotusta ja taittelua tunnin verran lisää.
           </StepContent>
         </StepItem>
         
@@ -160,7 +160,7 @@ const Ohje = () => {
             <StepTitle>Paista ensimmäinen leipä</StepTitle>
           </StepHeader>
           <StepContent>
-            Noin 30 minuuttia ennen paistamista aseta valurautapata tai kannellinen valurautakattila uuniin ja kuumenna 260°C:seen. Pölytä taikinoiden päät, jotka ovat edelleen koreissaan, täysjyvävehnä/riisijauho-seoksella. Poista kuumennettu pata varovasti uunista ja käännä 1 leipä hellävaroen pataan saumapuoli alaspäin. Käytä lamea (leipurin terää) tai partaterää viiltääksesi leivän päälle muutaman viillon, jotta leipä voi laajentua, peitä ja siirrä uuniin. Laske lämpötila 230°C:seen ja paista 20 minuuttia. Poista kansi varovasti (höyryä saattaa vapautua) ja paista vielä 20 minuuttia tai kunnes kuori on rikas, kultaisen ruskea.
+            Noin 30 minuuttia ennen paistamista aseta valurautapata tai kannellinen valurautakattila uuniin ja kuumenna 260°C:seen. Jauhoita taikinoiden päät, jotka ovat edelleen koreissaan, täysjyvävehnä/riisijauho-seoksella. Poista kuumennettu pata varovasti uunista ja käännä 1 leipä hellävaroen pataan saumapuoli alaspäin. Käytä lamea (leipurin terää) tai partaterää viiltääksesi leivän päälle muutaman viillon, jotta leipä voi laajentua, peitä ja siirrä uuniin. Laske lämpötila 230°C:seen ja paista 20 minuuttia. Poista kansi varovasti (höyryä saattaa vapautua) ja paista vielä 20 minuuttia tai kunnes kuori on rikas, kultaisen ruskea.
           </StepContent>
         </StepItem>
         
