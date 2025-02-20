@@ -1,142 +1,145 @@
-import {useState, useEffect} from "react"
-import styled from "styled-components"
+import { useState, useEffect, useCallback, useMemo } from 'react'
+import styled from 'styled-components'
 
 const Ajastin = () => {
-
-  const breadMakingSteps = [
-    {name: "Jauho&Vesi", duration: 45 * 60, icon: "🌾"},
-    {name: "Juuri&Taikina + venytys ja taittelu ", duration: 30* 60, icon: "🥖"},
-    {name: "Coil fold 1 kerta", duration: 30*60, icon: "🔄" },
-    {name: "Coil fold 2 kerta", duration: 30*60, icon: "🔄" },
-    {name: "Coil fold 3 kerta", duration: 30*60, icon: "🔄" },
-    {name: "Coil fold 4 kerta", duration: 30*60, icon: "🔄" },
-    {name: "Taikinan kohotus", duration: 240*60, icon: "⏳"},
-    {name: "Esimuotoilu ja kylmäkohotus", duration: 480*60, icon: "❄️"},
-    {name: "Taikinan viilto ja paistaminen", duration: 20*60, icon: "🔥"}
-];
+  const breadMakingSteps = useMemo(() => [
+    { name: 'Jauho&Vesi', duration: 45 * 60, icon: '🌾' },
+    { name: 'Juuri&Taikina + venytys ja taittelu ', duration: 30 * 60, icon: '🥖' },
+    { name: 'Coil fold 1 kerta', duration: 30 * 60, icon: '🔄' },
+    { name: 'Coil fold 2 kerta', duration: 30 * 60, icon: '🔄' },
+    { name: 'Coil fold 3 kerta', duration: 30 * 60, icon: '🔄' },
+    { name: 'Coil fold 4 kerta', duration: 30 * 60, icon: '🔄' },
+    { name: 'Taikinan kohotus', duration: 240 * 60, icon: '⏳' },
+    { name: 'Esimuotoilu ja kylmäkohotus', duration: 480 * 60, icon: '❄️' },
+    { name: 'Taikinan viilto ja paistaminen', duration: 20 * 60, icon: '🔥' },
+  ], [])
 
   const [currentStepIndex, setCurrentStepIndex] = useState(0)
-  const [currentTime, setCurrentTime] = useState(()=> breadMakingSteps[currentStepIndex].duration);
+  const [currentTime, setCurrentTime] = useState(() => breadMakingSteps[currentStepIndex].duration)
   const [isRunning, setIsRunning] = useState(false)
   const [completedSteps, setCompletedSteps] = useState([])
-  const [estimatedEndTime, setEstimatedEndTime] = useState(null);
-  
- const formatTime = (seconds) => {
-  const hours = Math.floor(seconds / 3600)
-  const minutes = Math.floor((seconds % 3600) / 60)
-  const secs = seconds % 60
-  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
-}
+  const [estimatedEndTime, setEstimatedEndTime] = useState(null)
 
-useEffect(()=> {
-  let interval;
-  if (isRunning && currentTime > 0) {
-    interval = setInterval(() => {
-      setCurrentTime(prev => prev -1);
-  },1000);
-  updateEstimatedEndTime();
-  }else if (currentTime === 0) {
-    setIsRunning(false);
-    if (currentStepIndex < breadMakingSteps.lenght -1){
-      showNotification();
+  const formatTime = (seconds) => {
+    const hours = Math.floor(seconds / 3600)
+    const minutes = Math.floor((seconds % 3600) / 60)
+    const secs = seconds % 60
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
+  }
+
+  const updateEstimatedEndTime = useCallback(() => {
+    const endTime = new Date()
+    endTime.setSeconds(endTime.getSeconds() + currentTime)
+    setEstimatedEndTime(endTime)
+  }, [currentTime])
+
+  const showNotification = useCallback(() => {
+    if (Notification.permission === 'granted') {
+      new Notification('Vaihe valmis!', {
+        body: `${breadMakingSteps[currentStepIndex].name} on valmis!`,
+      })
+    }
+  }, [currentStepIndex, breadMakingSteps])
+
+  useEffect(() => {
+    let interval
+    if (isRunning && currentTime > 0) {
+      interval = setInterval(() => {
+        setCurrentTime(prev => prev - 1)
+      }, 1000)
+    } else if (currentTime === 0) {
+      setIsRunning(false)
+      if (currentStepIndex < breadMakingSteps.length - 1) {
+        showNotification()
+      }
+    }
+    return () => clearInterval(interval)
+  }, [isRunning, currentTime, currentStepIndex, breadMakingSteps.length, showNotification])
+
+  useEffect(() => {
+    if (isRunning) {
+      updateEstimatedEndTime()
+    }
+  }, [isRunning, updateEstimatedEndTime])
+
+  useEffect(() => {
+    setCompletedSteps(new Array(breadMakingSteps.length).fill(false))
+  }, [breadMakingSteps.length])
+
+  const startTimer = () => {
+    if (currentTime > 0) {
+      setIsRunning(true)
+      Notification.requestPermission()
     }
   }
-  return () => clearInterval(interval);
-},[isRunning,currentTime]);
 
-useEffect(() => {
-  setCompletedSteps(new Array(breadMakingSteps.length).fill(false))
-}, []);
-
-const startTimer = () => {
-  if (currentTime > 0) {
-    setIsRunning(true);
-    updateEstimatedEndTime();
-    Notification.requestPermission();
+  const stopTimer = () => {
+    setIsRunning(false)
   }
-};
 
-const stopTimer = () => {
-  setIsRunning(false)
-};
-
-const resetTimer = () => {
-  setIsRunning(false)
-  setCurrentTime(breadMakingSteps[currentStepIndex].duration)
-  setEstimatedEndTime(null);
-};
-
-const handleStepSelect = (index) => {
-  setIsRunning(false)
-  setCurrentStepIndex(index)
-  setCurrentTime(breadMakingSteps[index].duration)
-  setEstimatedEndTime(null)
-};
-
-const toggleStepCompletion = (index) => {
-  const newCompletedSteps = [...completedSteps]
-  newCompletedSteps[index] = !newCompletedSteps[index]
-  setCompletedSteps(newCompletedSteps)
-};
-
-const updateEstimatedEndTime = () => {
-  const endTime = new Date();
-  endTime.setSeconds(endTime.getSeconds() + currentTime);
-  setEstimatedEndTime(endTime);
-};
-
-const showNotification= () => {
-  if (Notification.permission === "granted") {
-    new Notification("Vaihe valmis!", {
-      body: `${breadMakingSteps[currentStepIndex].name} on valmis!`
-    });
+  const resetTimer = () => {
+    setIsRunning(false)
+    setCurrentTime(breadMakingSteps[currentStepIndex].duration)
+    setEstimatedEndTime(null)
   }
-};
 
-return (
-  <Container>
-    <MainTimer>
-    <Header>
-        <Title>Leivänteko aikataulu</Title>
-        <CurrentStep>
-        <StepIcon>{breadMakingSteps[currentStepIndex].icon}</StepIcon>
-        <StepName> <p>{breadMakingSteps[currentStepIndex].name}</p></StepName>
-        </CurrentStep>
-    </Header>
+  const handleStepSelect = (index) => {
+    setIsRunning(false)
+    setCurrentStepIndex(index)
+    setCurrentTime(breadMakingSteps[index].duration)
+    setEstimatedEndTime(null)
+  }
 
-    <TimerSection>
-        <TimerDisplay $isRunning={isRunning}>
-          {formatTime(currentTime)}
-        </TimerDisplay>
-        {estimatedEndTime && (
-          <EstimatedTime>
-            Valmis: {estimatedEndTime.toLocaleTimeString()}
-          </EstimatedTime>
-        )}
-        <TotalSteps>
+  const toggleStepCompletion = (index) => {
+    const newCompletedSteps = [...completedSteps]
+    newCompletedSteps[index] = !newCompletedSteps[index]
+    setCompletedSteps(newCompletedSteps)
+  }
+
+  return (
+    <Container>
+      <MainTimer>
+        <Header>
+          <Title>Leivänteko aikataulu</Title>
+          <CurrentStep>
+            <StepIcon>{breadMakingSteps[currentStepIndex].icon}</StepIcon>
+            <StepName> <p>{breadMakingSteps[currentStepIndex].name}</p></StepName>
+          </CurrentStep>
+        </Header>
+
+        <TimerSection>
+          <TimerDisplay $isRunning={isRunning}>
+            {formatTime(currentTime)}
+          </TimerDisplay>
+          {estimatedEndTime && (
+            <EstimatedTime>
+              Valmis: {estimatedEndTime.toLocaleTimeString()}
+            </EstimatedTime>
+          )}
+          <TotalSteps>
             Vaihe {currentStepIndex + 1} / {breadMakingSteps.length}
-        </TotalSteps>
-      </TimerSection>
+          </TotalSteps>
+        </TimerSection>
 
-      <ButtonContainer> 
-      {isRunning ? (
-        <>
-        <StopButton onClick={stopTimer}>Stop</StopButton>
-        <ResetButton onClick={resetTimer}>Reset</ResetButton>
-        </>
-      ) : (
-        <>
-            <StartButton onClick={startTimer} disabled={currentTime === 0}>Aloita</StartButton>        
-            <ResetButton onClick={resetTimer}>Nollaa</ResetButton>
-        </>
-      )}
-    </ButtonContainer>
-  </MainTimer>
+        <ButtonContainer>
+          {isRunning ? (
+            <>
+              <StopButton onClick={stopTimer}>Stop</StopButton>
+              <ResetButton onClick={resetTimer}>Reset</ResetButton>
+            </>
+          ) : (
+            <>
+              <StartButton onClick={startTimer} disabled={currentTime === 0}>Aloita</StartButton>
+              <ResetButton onClick={resetTimer}>Nollaa</ResetButton>
+            </>
+          )}
+        </ButtonContainer>
+      </MainTimer>
 
       <StepsProgress>
         {breadMakingSteps.map((step, index) => (
-          <StepCard 
-            key={index} 
+          <StepCard
+            key={index}
             $active={index === currentStepIndex}
             $completed={completedSteps[index]}
           >
@@ -156,11 +159,11 @@ return (
           </StepCard>
         ))}
       </StepsProgress>
-</Container>
-  );
-};
+    </Container>
+  )
+}
 
-export default Ajastin;
+export default Ajastin
 
 const Container = styled.div`
   max-width: 800px;
@@ -174,7 +177,7 @@ const Container = styled.div`
     margin-top: 80px;
     padding: 0 0.5rem;
   }
-`;
+`
 
 const MainTimer = styled.div`
   background-color: #FFF8E8;
@@ -188,7 +191,7 @@ const MainTimer = styled.div`
     padding: 1rem;
     border-radius: 8px;
   }
-`;
+`
 
 const Header = styled.div`
   text-align: center;
@@ -200,7 +203,7 @@ const Header = styled.div`
     margin-bottom: 1rem;
     padding-bottom: 1rem;
   }
-`;
+`
 
 const Title = styled.h2`
   color: #8B7D5B;
@@ -212,7 +215,7 @@ const Title = styled.h2`
     font-size: 1.8rem;
     margin: 0 0 1rem 0;
   }
-`;
+`
 
 const CurrentStep = styled.div`
   display: flex;
@@ -225,7 +228,7 @@ const CurrentStep = styled.div`
     flex-direction: column;
     gap: 0.5rem;
   }
-`;
+`
 
 const StepCard = styled.div`
   display: flex;
@@ -248,7 +251,7 @@ const StepCard = styled.div`
     gap: 0.5rem;
   }
 
-`;
+`
 
 const StepInfo = styled.div`
   display: flex;
@@ -260,7 +263,7 @@ const StepInfo = styled.div`
   @media (max-width: 768px) {
     width: 100%;
   }
-`;
+`
 
 const StepIconWrapper = styled.div`
   font-size: 1.5rem;
@@ -275,11 +278,11 @@ const StepIconWrapper = styled.div`
     width: 2rem;
     height: 2rem;
   }
-`;
+`
 
 const StepDetails = styled.div`
   flex: 1;
-`;
+`
 
 const StepTitle = styled.div`
   color:rgb(139, 125, 91);
@@ -289,7 +292,7 @@ const StepTitle = styled.div`
   @media (max-width: 768px) {
     font-size: 0.9rem;
   }
-`;
+`
 
 const TotalSteps = styled.div`
    font-size: 1.1rem;
@@ -298,7 +301,7 @@ const TotalSteps = styled.div`
    @media (max-width: 768px) {
     font-size: 0.9rem;
   }
-`;
+`
 
 const StepsProgress = styled.div`
   display: flex;
@@ -308,7 +311,7 @@ const StepsProgress = styled.div`
   @media (max-width: 768px) {
     gap: 0.5rem;
   }
-`;
+`
 
 const StepIcon = styled.div`
   font-size: 1.8rem;
@@ -325,8 +328,7 @@ const StepIcon = styled.div`
     width: 2.5rem;
     height: 2.5rem;
   }
-`;
-
+`
 
 const StepName = styled.div`
   color:rgb(139, 125, 91);
@@ -338,7 +340,7 @@ const StepName = styled.div`
   @media (max-width: 768px) {
     font-size: 1rem;
   }
-`;
+`
 
 const StepDuration = styled.div`
   font-size: 0.9rem;
@@ -348,10 +350,7 @@ const StepDuration = styled.div`
   @media (max-width: 768px) {
     font-size: 0.8rem;
   }
-`;
-
-
-
+`
 
 const TimerSection = styled.div`
   display: flex;
@@ -359,7 +358,7 @@ const TimerSection = styled.div`
   align-items: center;
   gap: 1rem;
   margin-bottom: 2rem;
-`;
+`
 
 const TimerDisplay = styled.div`
   font-size: 4rem;
@@ -376,7 +375,7 @@ const TimerDisplay = styled.div`
     padding: 1rem 1.5rem;
     border-radius: 8px;
   }
-`;
+`
 
 const Button = styled.button`
    padding: 0.8rem 2rem;
@@ -403,7 +402,7 @@ const Button = styled.button`
     font-size: 1rem;
     min-width: 100px;
   }
-`;
+`
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -414,7 +413,7 @@ const ButtonContainer = styled.div`
     flex-direction: column;
     gap: 0.5rem;
   }
-`;
+`
 
 const EstimatedTime = styled.div`
   font-size: 1.2rem;
@@ -424,7 +423,7 @@ const EstimatedTime = styled.div`
   @media (max-width: 768px) {
     font-size: 1rem;
   }
-`;
+`
 
 const StopButton = styled(Button)`
    background-color: #F44336;
@@ -433,7 +432,7 @@ const StopButton = styled(Button)`
   &:hover {
     background-color: #E53935;
   }
-`;
+`
 
 const StartButton = styled(Button)`
   background-color: #4CAF50;
@@ -442,7 +441,7 @@ const StartButton = styled(Button)`
   &:hover:not(:disabled) {
     background-color: #43A047;
   }
-`;
+`
 
 const ResetButton = styled(Button)`
   background-color: #8B7D5B;
@@ -452,7 +451,7 @@ const ResetButton = styled(Button)`
     background-color: #756A4E;
   }
   
-`;
+`
 
 const CompleteButton = styled(Button)`
   padding: 0.6rem 1rem;
@@ -470,6 +469,4 @@ const CompleteButton = styled(Button)`
     padding: 0.5rem;
     font-size: 0.9rem;
   }
-`;
-
-
+`

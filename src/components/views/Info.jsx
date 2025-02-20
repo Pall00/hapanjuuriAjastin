@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 const Info = () => {
   return (
@@ -13,8 +13,7 @@ const Info = () => {
   )
 }
 
-export default Info;
-
+export default Info
 
 const Container = styled.div`
   align-items: center;
@@ -26,7 +25,7 @@ const Container = styled.div`
   margin-top: 100px
     
   `
-  const Information = styled.div`
+const Information = styled.div`
     display: flex;
     align-items: center;
     gap: 0.5rem;

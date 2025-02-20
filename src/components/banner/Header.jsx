@@ -1,41 +1,40 @@
-import { useState, useEffect } from 'react';
-import styled from "styled-components"
-import { Link as RouterLink, useLocation } from 'react-router-dom';
-import { useAuth } from '../../contexts/AuthContext';
-import Notification from '../common/Notification';
+import { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import { Link as RouterLink, useLocation } from 'react-router-dom'
+import { useAuth } from '../../contexts/AuthContext'
+import Notification from '../common/Notification'
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { user, logout } = useAuth();
-  const [showNotification, setShowNotification] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false)
+  const location = useLocation()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { user, logout } = useAuth()
+  const [showNotification, setShowNotification] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+      setIsScrolled(window.scrollY > 20)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
 
   const handleLogout = async () => {
     try {
-      await logout();
-      setShowNotification(true);
+      await logout()
+      setShowNotification(true)
     } catch (error) {
-      console.error('Logout error:', error);
+      console.error('Logout error:', error)
     }
-  };
+  }
 
-
-return (
+  return (
     <HeaderContainer $isScrolled={isScrolled}>
-    <Container>   
+      <Container>
         <Logo to="/">
           <LogoIcon>🍞</LogoIcon>
           <LogoText>Hapanjuuri ajastin</LogoText>
@@ -46,26 +45,26 @@ return (
         </MobileMenuButton>
 
         <Nav $isOpen={isMobileMenuOpen}>
-            <NavLink to="/laskuri" $isActive={location.pathname === '/laskuri'} onClick={() => setIsMobileMenuOpen(false)} >Laskuri</NavLink>
-            <NavLink to="/ajastin" $isActive={location.pathname === '/ajastin'} onClick={() => setIsMobileMenuOpen(false)}>Ajastin</NavLink>
-            <NavLink to="/ohje" $isActive={location.pathname === '/ohje'} onClick={() => setIsMobileMenuOpen(false)}>Ohje</NavLink>
-            <NavLink to="/" $isActive={location.pathname === '/'} onClick={() => setIsMobileMenuOpen(false)}>Info</NavLink>
-            {user ? (
-                  <AuthButton onClick={handleLogout}>Kirjaudu ulos</AuthButton>
-                    ) : (
-                  <NavLink to="/auth" $isActive={location.pathname === '/auth'}>Kirjaudu</NavLink>
-                    )}
+          <NavLink to="/laskuri" $isActive={location.pathname === '/laskuri'} onClick={() => setIsMobileMenuOpen(false)} >Laskuri</NavLink>
+          <NavLink to="/ajastin" $isActive={location.pathname === '/ajastin'} onClick={() => setIsMobileMenuOpen(false)}>Ajastin</NavLink>
+          <NavLink to="/ohje" $isActive={location.pathname === '/ohje'} onClick={() => setIsMobileMenuOpen(false)}>Ohje</NavLink>
+          <NavLink to="/" $isActive={location.pathname === '/'} onClick={() => setIsMobileMenuOpen(false)}>Info</NavLink>
+          {user ? (
+            <AuthButton onClick={handleLogout}>Kirjaudu ulos</AuthButton>
+          ) : (
+            <NavLink to="/auth" $isActive={location.pathname === '/auth'}>Kirjaudu</NavLink>
+          )}
         </Nav>
-          {showNotification && (
-            <Notification 
+        {showNotification && (
+          <Notification
             message="Olet kirjautunut ulos"
             onClose={() => setShowNotification(false)}
-              />
-          )}
-    </Container>
+          />
+        )}
+      </Container>
     </HeaderContainer>
-);
-};
+  )
+}
 
 export default Header
 
@@ -80,7 +79,7 @@ const HeaderContainer = styled.header`
   transition: all 0.3s ease;
   z-index: 1000;
   
-`;
+`
 
 const Container = styled.div`
   display: flex;
@@ -94,7 +93,7 @@ const Container = styled.div`
   @media (max-width: 768px) {
     padding: 0.5rem 0;
   }
-`;
+`
 
 const Logo = styled(RouterLink)`
   display: flex;
@@ -111,7 +110,7 @@ const Logo = styled(RouterLink)`
     gap: 0.5rem;
   }
   }
-`;
+`
 
 const LogoIcon = styled.span`
   font-size: 2.5rem;
@@ -124,7 +123,7 @@ const LogoIcon = styled.span`
   @media (max-width: 768px) {
     font-size: 2rem;
   }
-`;
+`
 
 const LogoText = styled.h1`
   font-weight: 700;
@@ -135,7 +134,7 @@ const LogoText = styled.h1`
   @media (max-width: 768px) {
     font-size: 1.6rem;
   }
-`;
+`
 
 const MobileMenuButton = styled.button`
   display: none;
@@ -149,7 +148,7 @@ const MobileMenuButton = styled.button`
   @media (max-width: 768px) {
     display: block;
   }
-`;
+`
 
 const Nav = styled.nav`
     display: flex;
@@ -170,7 +169,7 @@ const Nav = styled.nav`
     transition: transform 0.3s ease;
     box-shadow: ${props => props.$isOpen ? '-4px 0 12px rgba(0,0,0,0.1)' : 'none'};
     }
-`;
+`
 
 const NavLink = styled(RouterLink)`
   text-decoration: none;
@@ -209,7 +208,7 @@ const NavLink = styled(RouterLink)`
       width: 100%;
       text-align: center;
   }
-`;
+`
 
 const AuthButton = styled.button`
   text-decoration: none;
@@ -233,5 +232,4 @@ const AuthButton = styled.button`
     width: 100%;
     text-align: center;
   }
-`;
-
+`
