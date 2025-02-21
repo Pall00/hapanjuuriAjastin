@@ -15,7 +15,7 @@
 |       | 6    | Ajastimen ominaisuuksien lisäilyä ja mobiili käytettävyyttä parannettu|
 | 19.2. | 9    | Firebasen lisäys ja kirjautuminen |
 | 20.2. | 5    | Päivitetty lint ja korjattu varoitukset. Laskuriin lisätty input arvoille ja valmiit vesi% arvot|
-| 21.2. | 2    | testaus |
+| 21.2. | 4    | Ajastin päivitetty|
 | 22.2. | 2    | testaus |
 | 23.2. | 2    | testaus |
 | 24.2. | 2    | testaus |

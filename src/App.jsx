@@ -7,24 +7,27 @@ import Ajastin from './components/views/Ajastin'
 import Info from './components/views/Info'
 import Auth from './components/auth/Auth'
 import { AuthProvider } from './contexts/AuthContext'
+import { TimerProvider } from './providers/TimerProvider'
 
 const App = () => {
   return (
     <AuthProvider>
-      <Router>
-        <Container>
-          <Banner>
-            <Header />
-          </Banner>
-          <Routes>
-            <Route path="/laskuri" element={<Laskuri />} />
-            <Route path="/ohje" element={<Ohje />} />
-            <Route path="/ajastin" element={<Ajastin />} />
-            <Route path="/" element={<Info />} />
-            <Route path="/auth" element={<Auth />} />
-          </Routes>
-        </Container>
-      </Router>
+      <TimerProvider>
+        <Router>
+          <Container>
+            <Banner>
+              <Header />
+            </Banner>
+            <Routes>
+              <Route path="/laskuri" element={<Laskuri />} />
+              <Route path="/ohje" element={<Ohje />} />
+              <Route path="/ajastin" element={<Ajastin />} />
+              <Route path="/" element={<Info />} />
+              <Route path="/auth" element={<Auth />} />
+            </Routes>
+          </Container>
+        </Router>
+      </TimerProvider>
     </AuthProvider>
   )
 }

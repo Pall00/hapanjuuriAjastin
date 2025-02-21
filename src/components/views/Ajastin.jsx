@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useEffect, useCallback, useMemo } from 'react'
 import styled from 'styled-components'
+import { useTimer } from '../../hooks/useTimer'
 
 const Ajastin = () => {
   const breadMakingSteps = useMemo(() => [
@@ -14,11 +15,25 @@ const Ajastin = () => {
     { name: 'Taikinan viilto ja paistaminen', duration: 20 * 60, icon: '🔥' },
   ], [])
 
-  const [currentStepIndex, setCurrentStepIndex] = useState(0)
-  const [currentTime, setCurrentTime] = useState(() => breadMakingSteps[currentStepIndex].duration)
-  const [isRunning, setIsRunning] = useState(false)
-  const [completedSteps, setCompletedSteps] = useState([])
-  const [estimatedEndTime, setEstimatedEndTime] = useState(null)
+  const {
+    currentStepIndex,
+    setCurrentStepIndex,
+    currentTime,
+    setCurrentTime,
+    isRunning,
+    setIsRunning,
+    completedSteps,
+    setCompletedSteps,
+    estimatedEndTime,
+    setEstimatedEndTime,
+  } = useTimer()
+
+  useEffect(() => {
+    if (currentTime === null) {
+      setCurrentTime(breadMakingSteps[currentStepIndex].duration)
+      setCompletedSteps(new Array(breadMakingSteps.length).fill(false))
+    }
+  }, [currentTime, currentStepIndex, setCurrentTime, setCompletedSteps, breadMakingSteps])
 
   const formatTime = (seconds) => {
     const hours = Math.floor(seconds / 3600)
@@ -31,30 +46,7 @@ const Ajastin = () => {
     const endTime = new Date()
     endTime.setSeconds(endTime.getSeconds() + currentTime)
     setEstimatedEndTime(endTime)
-  }, [currentTime])
-
-  const showNotification = useCallback(() => {
-    if (Notification.permission === 'granted') {
-      new Notification('Vaihe valmis!', {
-        body: `${breadMakingSteps[currentStepIndex].name} on valmis!`,
-      })
-    }
-  }, [currentStepIndex, breadMakingSteps])
-
-  useEffect(() => {
-    let interval
-    if (isRunning && currentTime > 0) {
-      interval = setInterval(() => {
-        setCurrentTime(prev => prev - 1)
-      }, 1000)
-    } else if (currentTime === 0) {
-      setIsRunning(false)
-      if (currentStepIndex < breadMakingSteps.length - 1) {
-        showNotification()
-      }
-    }
-    return () => clearInterval(interval)
-  }, [isRunning, currentTime, currentStepIndex, breadMakingSteps.length, showNotification])
+  }, [currentTime, setEstimatedEndTime])
 
   useEffect(() => {
     if (isRunning) {
@@ -63,12 +55,15 @@ const Ajastin = () => {
   }, [isRunning, updateEstimatedEndTime])
 
   useEffect(() => {
-    setCompletedSteps(new Array(breadMakingSteps.length).fill(false))
-  }, [breadMakingSteps.length])
+    if (!completedSteps || completedSteps.length === 0) {
+      setCompletedSteps(new Array(breadMakingSteps.length).fill(false))
+    }
+  }, [completedSteps, setCompletedSteps, breadMakingSteps])
 
   const startTimer = () => {
     if (currentTime > 0) {
       setIsRunning(true)
+      updateEstimatedEndTime()
       Notification.requestPermission()
     }
   }
