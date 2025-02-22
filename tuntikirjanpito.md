@@ -16,7 +16,7 @@
 | 19.2. | 9    | Firebasen lisäys ja kirjautuminen |
 | 20.2. | 5    | Päivitetty lint ja korjattu varoitukset. Laskuriin lisätty input arvoille ja valmiit vesi% arvot|
 | 21.2. | 4    | Ajastin päivitetty|
-| 22.2. | 2    | testaus |
+| 22.2. | 4    | Lisätty kohotus lakuri|
 | 23.2. | 2    | testaus |
 | 24.2. | 2    | testaus |
 | 25.2. | 2    | testaus |

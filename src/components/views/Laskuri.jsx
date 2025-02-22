@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import styled from 'styled-components'
+import RiseCalculator from '../calculator/RiseCalculator'
 
 const Laskuri = () => {
   const [flourAmount, setFlourAmount] = useState(350)
@@ -199,6 +200,7 @@ const Laskuri = () => {
           </ResultsGrid>
           <ResetButton onClick={resetSliders}>Nollaa asetukset</ResetButton>
         </ResultsCard>
+        <RiseCalculator />
       </MainContent>
     </Container>
   )
