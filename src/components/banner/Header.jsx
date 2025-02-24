@@ -47,6 +47,7 @@ const Header = () => {
         <Nav $isOpen={isMobileMenuOpen}>
           <NavLink to="/laskuri" $isActive={location.pathname === '/laskuri'} onClick={() => setIsMobileMenuOpen(false)} >Laskuri</NavLink>
           <NavLink to="/ajastin" $isActive={location.pathname === '/ajastin'} onClick={() => setIsMobileMenuOpen(false)}>Ajastin</NavLink>
+          <NavLink to="/reseptit" $isActive={location.pathname === '/reseptit'} onClick={() => setIsMobileMenuOpen(false)}>Reseptit</NavLink>
           <NavLink to="/ohje" $isActive={location.pathname === '/ohje'} onClick={() => setIsMobileMenuOpen(false)}>Ohje</NavLink>
           <NavLink to="/" $isActive={location.pathname === '/'} onClick={() => setIsMobileMenuOpen(false)}>Info</NavLink>
           {user ? (

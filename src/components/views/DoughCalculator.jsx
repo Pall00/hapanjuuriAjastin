@@ -2,7 +2,7 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import RiseCalculator from '../calculator/RiseCalculator'
 
-const Laskuri = () => {
+const DoughCalculator = () => {
   const [flourAmount, setFlourAmount] = useState(350)
   const [waterAmount, setWaterAmount] = useState(274)
   const [starterAmount, setStarterAmount] = useState(70)
@@ -206,7 +206,7 @@ const Laskuri = () => {
   )
 }
 
-export default Laskuri
+export default DoughCalculator
 
 const Container = styled.div`
   max-width: 800px;

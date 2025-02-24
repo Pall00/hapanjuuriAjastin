@@ -2,7 +2,7 @@ import { useEffect, useCallback, useMemo } from 'react'
 import styled from 'styled-components'
 import { useTimer } from '../../hooks/useTimer'
 
-const Ajastin = () => {
+const Timer = () => {
   const breadMakingSteps = useMemo(() => [
     { name: 'Jauho&Vesi', duration: 45 * 60, icon: '🌾' },
     { name: 'Juuri&Taikina + venytys ja taittelu ', duration: 30 * 60, icon: '🥖' },
@@ -158,7 +158,7 @@ const Ajastin = () => {
   )
 }
 
-export default Ajastin
+export default Timer
 
 const Container = styled.div`
   max-width: 800px;

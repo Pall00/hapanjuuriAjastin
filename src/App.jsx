@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 import Header from './components/banner/Header'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Laskuri from './components/views/Laskuri'
-import Ohje from './components/views/Ohje'
-import Ajastin from './components/views/Ajastin'
+import DoughCalculator from './components/views/DoughCalculator'
+import Guide from './components/views/Guide'
+import Timer from './components/views/Timer'
 import Info from './components/views/Info'
 import Auth from './components/auth/Auth'
+import RecipeHistory from './components/views/RecipeHistory'
 import { AuthProvider } from './contexts/AuthContext'
 import { TimerProvider } from './providers/TimerProvider'
 
@@ -19,9 +20,10 @@ const App = () => {
               <Header />
             </Banner>
             <Routes>
-              <Route path="/laskuri" element={<Laskuri />} />
-              <Route path="/ohje" element={<Ohje />} />
-              <Route path="/ajastin" element={<Ajastin />} />
+              <Route path="/laskuri" element={<DoughCalculator />} />
+              <Route path="/reseptit" element={<RecipeHistory />} />
+              <Route path="/ohje" element={<Guide />} />
+              <Route path="/ajastin" element={<Timer />} />
               <Route path="/" element={<Info />} />
               <Route path="/auth" element={<Auth />} />
             </Routes>

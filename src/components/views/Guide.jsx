@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Ohje = () => {
+const Guide = () => {
   return (
     <Container>
       <Header>
@@ -189,7 +189,7 @@ const Ohje = () => {
   )
 }
 
-export default Ohje
+export default Guide
 
 const Container = styled.div`
   max-width: 800px;
