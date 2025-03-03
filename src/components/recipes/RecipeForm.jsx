@@ -18,6 +18,7 @@ const RecipeForm = ({ onClose, recipe, onSave }) => {
       starterAmount: recipe.ingredients.starter,
       saltAmount: recipe.ingredients.salt,
       hydrationLevel: recipe.hydrationLevel || Math.round((recipe.ingredients.water / recipe.ingredients.flour) * 100),
+      riseTime: recipe.riseTime,
       rating: recipe.rating,
       notes: recipe.notes || '',
     } : {
@@ -26,6 +27,7 @@ const RecipeForm = ({ onClose, recipe, onSave }) => {
       starterAmount: 70,
       saltAmount: 7,
       hydrationLevel: 78,
+      riseTime: 8,
       rating: 3,
       notes: '',
     },
@@ -57,15 +59,14 @@ const RecipeForm = ({ onClose, recipe, onSave }) => {
           water: formData.waterAmount,
           starter: formData.starterAmount,
           salt: formData.saltAmount,
+          riseTime: formData.riseTime,
         },
       }
 
       if (recipe) {
-        // Update existing recipe
         await updateDoc(doc(db, 'recipes', recipe.id), recipeData)
         setNotificationMessage('Resepti päivitetty onnistuneesti!')
       } else {
-        // Create new recipe
         recipeData.createdAt = serverTimestamp()
         await addDoc(collection(db, 'recipes'), recipeData)
         setNotificationMessage('Resepti tallennettu onnistuneesti!')
@@ -155,6 +156,19 @@ const RecipeForm = ({ onClose, recipe, onSave }) => {
               max="100"
             />
           </InputGroup>
+
+          <InputGroup>
+            <Label>Kohotus aika (h)</Label>
+            <Input
+              type="number"
+              name="riseTime"
+              value={formData.riseTime}
+              onChange={handleChange}
+              min="0"
+              max="100"
+            />
+          </InputGroup>
+          
         </FormSection>
 
         <FormSection>

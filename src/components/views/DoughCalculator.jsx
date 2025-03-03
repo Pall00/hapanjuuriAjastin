@@ -239,13 +239,14 @@ const Header = styled.div`
 `
 
 const Title = styled.h2`
-  color: rgb(139, 125, 91);
+  color: #8B7D5B;
   font-size: 2.2rem;
-  margin: 0;
+  margin: 0 0 1.5rem 0;
   font-weight: 700;
 
   @media (max-width: 768px) {
     font-size: 1.8rem;
+    margin: 0 0 1rem 0;
   }
 `
 

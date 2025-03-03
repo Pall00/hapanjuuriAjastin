@@ -93,14 +93,19 @@ const RecipeCard = ({ recipe, onEdit, onDelete }) => {
             <IngredientLabel>Suola</IngredientLabel>
             <IngredientValue>{recipe.ingredients.salt}g</IngredientValue>
           </IngredientItem>
-        </IngredientGrid>
 
-        <StatsSection>
-          <StatItem>
-            <StatLabel>Hydraatio</StatLabel>
-            <StatValue>{calculateHydration()}%</StatValue>
-          </StatItem>
-        </StatsSection>
+          <IngredientItem>
+            <IngredientIcon>💦</IngredientIcon>
+            <IngredientLabel>Hydraatio</IngredientLabel>
+            <IngredientValue>{calculateHydration()}%</IngredientValue>
+          </IngredientItem>
+
+          <IngredientItem>
+            <IngredientIcon>⌚️</IngredientIcon>
+            <IngredientLabel>Kohotus aika</IngredientLabel>
+            <IngredientValue>{recipe.riseTime} h</IngredientValue>
+          </IngredientItem>
+        </IngredientGrid>.
 
         {recipe.notes && (
           <NotesSection>
@@ -237,32 +242,6 @@ const IngredientValue = styled.span`
   color: rgb(139, 125, 91);
   font-weight: 600;
   margin-left: auto;
-`
-
-const StatsSection = styled.div`
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  padding: 0.75rem;
-  background-color: rgb(251, 249, 244);
-  border-radius: 6px;
-`
-
-const StatItem = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-`
-
-const StatLabel = styled.span`
-  color: rgb(139, 125, 91);
-  font-size: 0.9rem;
-  font-weight: 500;
-`
-
-const StatValue = styled.span`
-  color: rgb(139, 125, 91);
-  font-weight: 600;
 `
 
 const NotesSection = styled.div`

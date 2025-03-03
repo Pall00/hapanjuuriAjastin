@@ -163,14 +163,18 @@ export default Timer
 const Container = styled.div`
   max-width: 800px;
   width: 100%;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  margin: 0 auto;
+  padding: 1.5rem;
   font-family: 'Helvetica Neue', sans-serif;
+  background-color: rgb(251, 249, 244);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   margin-top: 100px;
 
   @media (max-width: 768px) {
+    padding: 1rem;
     margin-top: 80px;
-    padding: 0 0.5rem;
+    border-radius: 8px;
   }
 `
 
