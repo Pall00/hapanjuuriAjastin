@@ -20,9 +20,9 @@
 | 24.2. | 5    | Resepti näkymä lisätty ja tiedostoja nimetty uusiksi ja turhia poistettu|
 |       | 5    | Aloitettu reseptien lisäyksen tekoa|
 | 25.2. | 10   | Reseptien lisäys paranneltu|
-| 26.2. | 2    | testaus |
-| 27.2. | 2    | testaus |
-| 28.2. | 2    | testaus |
+| 3.3.  | 5    | Deploin kuntoon laitto raspi servulle. |
+| 4.3.  | 1    | Deploin parantelua|
+| 5.3.  | 2    | testaus |
 
 
 
