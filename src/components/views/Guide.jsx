@@ -8,11 +8,15 @@ const Guide = () => {
         <RecipeBanner>
           <BannerItem>
             <BannerIcon>🍞</BannerIcon>
-            <BannerText><Strong>TUOTTO:</Strong> 2 leipää</BannerText>
+            <BannerText>
+              <Strong>TUOTTO:</Strong> 2 leipää
+            </BannerText>
           </BannerItem>
           <BannerItem>
             <BannerIcon>⏱️</BannerIcon>
-            <BannerText><Strong>AIKA:</Strong> 2 viikkoa (tai 2 päivää aktiivisella juurella)</BannerText>
+            <BannerText>
+              <Strong>AIKA:</Strong> 2 viikkoa (tai 2 päivää aktiivisella juurella)
+            </BannerText>
           </BannerItem>
         </RecipeBanner>
       </Header>
@@ -50,7 +54,11 @@ const Guide = () => {
               <StepTitle>Valmista juuri</StepTitle>
             </StepHeader>
             <StepContent>
-              Yhdistä 1000 grammaa valkoisia vehnäjauhoja 1000 gramman täysjyvävehnäjauhojen kanssa. Laita 100 grammaa lämmintä vettä (noin 26-27°C) pieneen purkkiin tai astiaan ja lisää 100 grammaa jauhoseosta. Sekoita sormilla, kunnes seos on täysin tasainen ja koostumukseltaan paksun taikinan kaltainen. Peitä pyyheliinalla ja anna seistä huoneenlämmössä, kunnes seos alkaa kuplia ja kohota, 2-3 päivää.
+              Yhdistä 1000 grammaa valkoisia vehnäjauhoja 1000 gramman täysjyvävehnäjauhojen kanssa.
+              Laita 100 grammaa lämmintä vettä (noin 26-27°C) pieneen purkkiin tai astiaan ja lisää
+              100 grammaa jauhoseosta. Sekoita sormilla, kunnes seos on täysin tasainen ja
+              koostumukseltaan paksun taikinan kaltainen. Peitä pyyheliinalla ja anna seistä
+              huoneenlämmössä, kunnes seos alkaa kuplia ja kohota, 2-3 päivää.
             </StepContent>
           </StepItem>
 
@@ -60,7 +68,12 @@ const Guide = () => {
               <StepTitle>Aloita säännöllinen ruokinta</StepTitle>
             </StepHeader>
             <StepContent>
-              Kun juuri alkaa osoittaa aktiivisuuden merkkejä, aloita säännöllinen ruokinta. Pidä juuri huoneenlämmössä ja samaan aikaan joka päivä heitä pois 80 prosenttia juuresta ja ruoki jäljellä olevaa juuri yhtä suurilla osilla lämmintä vettä ja valkoinen-täysjyvä jauhoseosta (50 grammaa kumpaakin riittää). Kun juuri alkaa nousta ja laskea ennustettavasti ja saa hieman happaman tuoksun, se on valmis; tämä kestää noin 1 viikon. (Säilytä loput jauhoseoksesta esitaikinaa varten.)
+              Kun juuri alkaa osoittaa aktiivisuuden merkkejä, aloita säännöllinen ruokinta. Pidä
+              juuri huoneenlämmössä ja samaan aikaan joka päivä heitä pois 80 prosenttia juuresta ja
+              ruoki jäljellä olevaa juuri yhtä suurilla osilla lämmintä vettä ja valkoinen-täysjyvä
+              jauhoseosta (50 grammaa kumpaakin riittää). Kun juuri alkaa nousta ja laskea
+              ennustettavasti ja saa hieman happaman tuoksun, se on valmis; tämä kestää noin 1
+              viikon. (Säilytä loput jauhoseoksesta esitaikinaa varten.)
             </StepContent>
           </StepItem>
 
@@ -70,7 +83,13 @@ const Guide = () => {
               <StepTitle>Valmista esitaikina</StepTitle>
             </StepHeader>
             <StepContent>
-              Leivontaa edeltävänä iltana heitä pois kaikki paitsi 1 ruokalusikallinen kypsää juurta. Sekoita jäljellä oleva juuri 200 gramman lämpimän veden kanssa ja sekoita kädelläsi tasaiseksi. Lisää 200 grammaa valkoinen-täysjyvä jauhoseosta ja sekoita hyvin. Peitä pyyheliinalla ja anna levätä huoneenlämmössä 12 tuntia tai kunnes se on ilmava ja kohonnut ulkonäöltään. Testataksesi valmiutta, pudota ruokalusikallinen esitaikinaa huoneenlämpöiseen vesiastiaan; jos se kelluu, se on valmista käytettäväksi. Jos ei, anna käydä pidempään.
+              Leivontaa edeltävänä iltana heitä pois kaikki paitsi 1 ruokalusikallinen kypsää
+              juurta. Sekoita jäljellä oleva juuri 200 gramman lämpimän veden kanssa ja sekoita
+              kädelläsi tasaiseksi. Lisää 200 grammaa valkoinen-täysjyvä jauhoseosta ja sekoita
+              hyvin. Peitä pyyheliinalla ja anna levätä huoneenlämmössä 12 tuntia tai kunnes se on
+              ilmava ja kohonnut ulkonäöltään. Testataksesi valmiutta, pudota ruokalusikallinen
+              esitaikinaa huoneenlämpöiseen vesiastiaan; jos se kelluu, se on valmista
+              käytettäväksi. Jos ei, anna käydä pidempään.
             </StepContent>
           </StepItem>
 
@@ -80,7 +99,9 @@ const Guide = () => {
               <StepTitle>Valmista taikina</StepTitle>
             </StepHeader>
             <StepContent>
-              Isossa kulhossa yhdistä 200 grammaa esitaikinaa 700 gramman lämpimän veden kanssa ja sekoita tasaiseksi. (Säilytä loput esitaikinasta tulevia leipiä varten; katso huomautus lopussa.)
+              Isossa kulhossa yhdistä 200 grammaa esitaikinaa 700 gramman lämpimän veden kanssa ja
+              sekoita tasaiseksi. (Säilytä loput esitaikinasta tulevia leipiä varten; katso
+              huomautus lopussa.)
             </StepContent>
           </StepItem>
 
@@ -90,7 +111,10 @@ const Guide = () => {
               <StepTitle>Lisää jauhot</StepTitle>
             </StepHeader>
             <StepContent>
-              Lisää kulhoon 900 grammaa valkoisia vehnäjauhoja ja 100 grammaa täysjyvävehnäjauhoja ja käytä käsiäsi sekoittaaksesi, kunnes kuivia jauhojen jälkiä ei ole näkyvissä. Taikina on tahmeaa ja epätasaista. Peitä kulho pyyheliinalla ja anna taikinan levätä 25-40 minuuttia huoneenlämmössä.
+              Lisää kulhoon 900 grammaa valkoisia vehnäjauhoja ja 100 grammaa täysjyvävehnäjauhoja
+              ja käytä käsiäsi sekoittaaksesi, kunnes kuivia jauhojen jälkiä ei ole näkyvissä.
+              Taikina on tahmeaa ja epätasaista. Peitä kulho pyyheliinalla ja anna taikinan levätä
+              25-40 minuuttia huoneenlämmössä.
             </StepContent>
           </StepItem>
 
@@ -100,7 +124,9 @@ const Guide = () => {
               <StepTitle>Lisää suola</StepTitle>
             </StepHeader>
             <StepContent>
-              Lisää 20 grammaa hienoa merisuolaa ja 50 grammaa lämmintä vettä. Käytä käsiäsi suolan ja veden perusteelliseen sekoittamiseen taikinaan. Taikina alkaa hajota, mutta jatka sekoittamista; se yhdistyy taas.
+              Lisää 20 grammaa hienoa merisuolaa ja 50 grammaa lämmintä vettä. Käytä käsiäsi suolan
+              ja veden perusteelliseen sekoittamiseen taikinaan. Taikina alkaa hajota, mutta jatka
+              sekoittamista; se yhdistyy taas.
             </StepContent>
           </StepItem>
 
@@ -110,7 +136,14 @@ const Guide = () => {
               <StepTitle>Kohota ja taittele</StepTitle>
             </StepHeader>
             <StepContent>
-              Peitä taikina pyyheliinalla ja siirrä lämpimään ympäristöön, ihanteellisesti 24-27°C (kuten ikkunan lähelle aurinkoisessa huoneessa tai sammutetun uunin sisälle valo päällä). Anna taikinan nousta 30 minuuttia. Taittele taikina kastamalla käsi veteen, tarttumalla taikinan alaosaan yhdestä neljänneksestä ja venyttämällä se taikinan muun osan päälle. Toista tämä toiminta vielä 3 kertaa, kääntäen kulhoa neljänneskierroksen jokaisen taitoksen jälkeen. Tee tämä joka puolen tunnin välein 2,5 tunnin ajan (yhteensä 3 tuntia). Taikinan pitäisi olla ilmava ja kasvaa tilavuudeltaan 20-30 prosenttia. Jos ei, jatka kohotusta ja taittelua tunnin verran lisää.
+              Peitä taikina pyyheliinalla ja siirrä lämpimään ympäristöön, ihanteellisesti 24-27°C
+              (kuten ikkunan lähelle aurinkoisessa huoneessa tai sammutetun uunin sisälle valo
+              päällä). Anna taikinan nousta 30 minuuttia. Taittele taikina kastamalla käsi veteen,
+              tarttumalla taikinan alaosaan yhdestä neljänneksestä ja venyttämällä se taikinan muun
+              osan päälle. Toista tämä toiminta vielä 3 kertaa, kääntäen kulhoa neljänneskierroksen
+              jokaisen taitoksen jälkeen. Tee tämä joka puolen tunnin välein 2,5 tunnin ajan
+              (yhteensä 3 tuntia). Taikinan pitäisi olla ilmava ja kasvaa tilavuudeltaan 20-30
+              prosenttia. Jos ei, jatka kohotusta ja taittelua tunnin verran lisää.
             </StepContent>
           </StepItem>
 
@@ -120,7 +153,12 @@ const Guide = () => {
               <StepTitle>Muotoile taikinapallot</StepTitle>
             </StepHeader>
             <StepContent>
-              Siirrä taikina työtasolle ja pölytetä päälle jauhoja. Käytä taikinankaavinta leikataksesi taikinan 2 yhtä suureen osaan ja käännä ne ympäri, jotta jauhoiset puolet ovat alaspäin. Taita kunkin palan leikattu puoli itsensä päälle, jotta pinnalla olevat jauhot jäävät kokonaan leivän ulkopuolelle; tästä tulee kuori. Muotoile taikina kireiksi palloiksi. Aseta taikinapallot työtasolle, peitä pyyheliinalla ja anna levätä 30 minuuttia.
+              Siirrä taikina työtasolle ja pölytetä päälle jauhoja. Käytä taikinankaavinta
+              leikataksesi taikinan 2 yhtä suureen osaan ja käännä ne ympäri, jotta jauhoiset puolet
+              ovat alaspäin. Taita kunkin palan leikattu puoli itsensä päälle, jotta pinnalla olevat
+              jauhot jäävät kokonaan leivän ulkopuolelle; tästä tulee kuori. Muotoile taikina
+              kireiksi palloiksi. Aseta taikinapallot työtasolle, peitä pyyheliinalla ja anna levätä
+              30 minuuttia.
             </StepContent>
           </StepItem>
 
@@ -130,7 +168,9 @@ const Guide = () => {
               <StepTitle>Valmistele kohotusastiat</StepTitle>
             </StepHeader>
             <StepContent>
-              Sekoita 100 grammaa täysjyvävehnäjauhoja ja 100 grammaa riisijauhoja. Vuoraa kaksi 25-30 cm leivän kohotuskoria tai sekoituskulhoa pyyheliinoilla. Käytä osa jauhoista pyyheliinojen runsaaseen jauhotukseen (säilytä loput seoksesta).
+              Sekoita 100 grammaa täysjyvävehnäjauhoja ja 100 grammaa riisijauhoja. Vuoraa kaksi
+              25-30 cm leivän kohotuskoria tai sekoituskulhoa pyyheliinoilla. Käytä osa jauhoista
+              pyyheliinojen runsaaseen jauhotukseen (säilytä loput seoksesta).
             </StepContent>
           </StepItem>
 
@@ -140,7 +180,15 @@ const Guide = () => {
               <StepTitle>Lopullinen muotoilu</StepTitle>
             </StepHeader>
             <StepContent>
-              Pölytä pallot täysjyvävehnäjauhoilla. Käytä taikinankaavinta kääntääksesi ne työtasolle niin, että jauhoiset puolet ovat alaspäin. Ota yksi pallo, ja aloittaen lähinnä sinua olevasta reunasta, vedä taikinan alaosan 2 kulmaa alas kohti itseäsi, sitten taita ne taikinan keskiosaan. Toista tämä toiminta oikealla ja vasemmalla puolella, vetäen reunat ulos ja taitellen ne keskustan päälle. Lopuksi nosta yläkulmat ylös ja taita alas edellisten taitosten päälle. (Kuvittele, että taittelet paperinpalan sisäänpäin kaikista 4 reunasta.) Pyöritä taikina ympäri niin, että taitettu puoli tulee leivän pohjaksi. Muotoile sileäksi, kireäksi palloksi. Toista toiselle pallolle.
+              Pölytä pallot täysjyvävehnäjauhoilla. Käytä taikinankaavinta kääntääksesi ne
+              työtasolle niin, että jauhoiset puolet ovat alaspäin. Ota yksi pallo, ja aloittaen
+              lähinnä sinua olevasta reunasta, vedä taikinan alaosan 2 kulmaa alas kohti itseäsi,
+              sitten taita ne taikinan keskiosaan. Toista tämä toiminta oikealla ja vasemmalla
+              puolella, vetäen reunat ulos ja taitellen ne keskustan päälle. Lopuksi nosta yläkulmat
+              ylös ja taita alas edellisten taitosten päälle. (Kuvittele, että taittelet
+              paperinpalan sisäänpäin kaikista 4 reunasta.) Pyöritä taikina ympäri niin, että
+              taitettu puoli tulee leivän pohjaksi. Muotoile sileäksi, kireäksi palloksi. Toista
+              toiselle pallolle.
             </StepContent>
           </StepItem>
 
@@ -150,7 +198,9 @@ const Guide = () => {
               <StepTitle>Lopullinen kohotus</StepTitle>
             </StepHeader>
             <StepContent>
-              Siirrä pallot, saumapuoli ylöspäin, valmisteltuihin koreihin. Peitä pyyheliinalla ja palauta taikina 24-27°C lämpötilaan 3-4 tunniksi. (Tai anna taikinan nousta 10-12 tuntia jääkaapissa. Tuo takaisin huoneenlämpöön ennen paistamista.)
+              Siirrä pallot, saumapuoli ylöspäin, valmisteltuihin koreihin. Peitä pyyheliinalla ja
+              palauta taikina 24-27°C lämpötilaan 3-4 tunniksi. (Tai anna taikinan nousta 10-12
+              tuntia jääkaapissa. Tuo takaisin huoneenlämpöön ennen paistamista.)
             </StepContent>
           </StepItem>
 
@@ -160,7 +210,14 @@ const Guide = () => {
               <StepTitle>Paista ensimmäinen leipä</StepTitle>
             </StepHeader>
             <StepContent>
-              Noin 30 minuuttia ennen paistamista aseta valurautapata tai kannellinen valurautakattila uuniin ja kuumenna 260°C:seen. Jauhoita taikinoiden päät, jotka ovat edelleen koreissaan, täysjyvävehnä/riisijauho-seoksella. Poista kuumennettu pata varovasti uunista ja käännä 1 leipä hellävaroen pataan saumapuoli alaspäin. Käytä lamea (leipurin terää) tai partaterää viiltääksesi leivän päälle muutaman viillon, jotta leipä voi laajentua, peitä ja siirrä uuniin. Laske lämpötila 230°C:seen ja paista 20 minuuttia. Poista kansi varovasti (höyryä saattaa vapautua) ja paista vielä 20 minuuttia tai kunnes kuori on rikas, kultaisen ruskea.
+              Noin 30 minuuttia ennen paistamista aseta valurautapata tai kannellinen
+              valurautakattila uuniin ja kuumenna 260°C:seen. Jauhoita taikinoiden päät, jotka ovat
+              edelleen koreissaan, täysjyvävehnä/riisijauho-seoksella. Poista kuumennettu pata
+              varovasti uunista ja käännä 1 leipä hellävaroen pataan saumapuoli alaspäin. Käytä
+              lamea (leipurin terää) tai partaterää viiltääksesi leivän päälle muutaman viillon,
+              jotta leipä voi laajentua, peitä ja siirrä uuniin. Laske lämpötila 230°C:seen ja
+              paista 20 minuuttia. Poista kansi varovasti (höyryä saattaa vapautua) ja paista vielä
+              20 minuuttia tai kunnes kuori on rikas, kultaisen ruskea.
             </StepContent>
           </StepItem>
 
@@ -170,7 +227,9 @@ const Guide = () => {
               <StepTitle>Jäähdytä ja paista toinen leipä</StepTitle>
             </StepHeader>
             <StepContent>
-              Siirrä leipä ritilälle jäähtymään vähintään 15 minuutiksi ennen viipalointia. Leivän pohjan pitäisi kuulostaa ontolta, kun sitä napautetaan. Nosta uunin lämpötila takaisin 260°C:seen, puhdista pata ja toista tämä prosessi toisen leivän kanssa.
+              Siirrä leipä ritilälle jäähtymään vähintään 15 minuutiksi ennen viipalointia. Leivän
+              pohjan pitäisi kuulostaa ontolta, kun sitä napautetaan. Nosta uunin lämpötila takaisin
+              260°C:seen, puhdista pata ja toista tämä prosessi toisen leivän kanssa.
             </StepContent>
           </StepItem>
         </InstructionSteps>
@@ -181,7 +240,10 @@ const Guide = () => {
             <TipTitle>VINKKI</TipTitle>
           </TipHeader>
           <TipContent>
-            Jäljellä oleva esitaikina on uusi juuresi. Jatka sen ruokkimista, jos aiot leipoa pian uudestaan, tai säilytä ilmatiiviissä astiassa jääkaapissa tulevaa käyttöä varten. Kun haluat leipoa uudelleen, ala ruokkia juurta muutamaa päivää tai viikkoa etukäteen, kunnes se jälleen käyttäytyy ennustettavasti.
+            Jäljellä oleva esitaikina on uusi juuresi. Jatka sen ruokkimista, jos aiot leipoa pian
+            uudestaan, tai säilytä ilmatiiviissä astiassa jääkaapissa tulevaa käyttöä varten. Kun
+            haluat leipoa uudelleen, ala ruokkia juurta muutamaa päivää tai viikkoa etukäteen,
+            kunnes se jälleen käyttäytyy ennustettavasti.
           </TipContent>
         </TipBox>
       </Section>
@@ -199,7 +261,7 @@ const Container = styled.div`
   color: #333;
   font-family: 'Helvetica Neue', sans-serif;
   line-height: 1.6;
-  background-color: #FBF9F4;
+  background-color: #fbf9f4;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   margin-top: 100px;
@@ -214,7 +276,7 @@ const Container = styled.div`
 const Header = styled.div`
   text-align: center;
   margin-bottom: 2rem;
-  border-bottom: 2px solid #E7DFC6;
+  border-bottom: 2px solid #e7dfc6;
   padding-bottom: 1.5rem;
 
   @media (max-width: 768px) {
@@ -224,7 +286,7 @@ const Header = styled.div`
 `
 
 const Title = styled.h1`
-  color: #8B7D5B;
+  color: #8b7d5b;
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
   font-weight: 700;
@@ -269,7 +331,7 @@ const BannerIcon = styled.span`
 
 const BannerText = styled.p`
   font-size: 1.1rem;
-  color: #5C5545;
+  color: #5c5545;
 
   @media (max-width: 768px) {
     font-size: 1rem;
@@ -291,11 +353,11 @@ const Section = styled.section`
 `
 
 const SectionTitle = styled.h2`
-  color: #8B7D5B;
+  color: #8b7d5b;
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
   font-weight: 600;
-  border-bottom: 1px solid #E7DFC6;
+  border-bottom: 1px solid #e7dfc6;
   padding-bottom: 0.5rem;
 
   @media (max-width: 768px) {
@@ -305,11 +367,11 @@ const SectionTitle = styled.h2`
 `
 
 const IngredientGroup = styled.div`
-   margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
   background-color: white;
   padding: 1rem;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
   @media (max-width: 768px) {
     padding: 0.75rem;
@@ -318,7 +380,7 @@ const IngredientGroup = styled.div`
 `
 
 const GroupTitle = styled.h3`
-  color: #8B7D5B;
+  color: #8b7d5b;
   font-size: 1.3rem;
   margin-bottom: 0.75rem;
   font-weight: 600;
@@ -342,13 +404,13 @@ const IngredientItem = styled.li`
   margin-bottom: 0.5rem;
   position: relative;
   padding-left: 1.5rem;
-  color: #5C5545;
-  
+  color: #5c5545;
+
   &:before {
-    content: "•";
+    content: '•';
     position: absolute;
     left: 0;
-    color: #8B7D5B;
+    color: #8b7d5b;
     font-weight: bold;
   }
 
@@ -393,8 +455,8 @@ const StepHeader = styled.div`
 `
 
 const StepNumber = styled.div`
-  background-color: #E7DFC6;
-  color: #8B7D5B;
+  background-color: #e7dfc6;
+  color: #8b7d5b;
   height: 2rem;
   width: 2rem;
   border-radius: 50%;
@@ -402,7 +464,7 @@ const StepNumber = styled.div`
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  
+
   @media (max-width: 768px) {
     height: 1.75rem;
     width: 1.75rem;
@@ -411,7 +473,7 @@ const StepNumber = styled.div`
 `
 
 const StepTitle = styled.h3`
-  color: #8B7D5B;
+  color: #8b7d5b;
   font-size: 1.3rem;
   font-weight: 600;
   margin: 0;
@@ -422,7 +484,7 @@ const StepTitle = styled.h3`
 `
 
 const StepContent = styled.p`
-  color: #5C5545;
+  color: #5c5545;
   font-size: 1rem;
   line-height: 1.7;
 
@@ -433,8 +495,8 @@ const StepContent = styled.p`
 `
 
 const TipBox = styled.div`
-  background-color: #FFF8E8;
-  border: 1px solid #FAECD0;
+  background-color: #fff8e8;
+  border: 1px solid #faecd0;
   border-radius: 8px;
   padding: 1.5rem;
   margin-top: 2.5rem;
@@ -466,7 +528,7 @@ const TipIcon = styled.span`
 `
 
 const TipTitle = styled.h4`
-  color: #C0A970;
+  color: #c0a970;
   font-size: 1.2rem;
   font-weight: 700;
   margin: 0;
@@ -477,7 +539,7 @@ const TipTitle = styled.h4`
 `
 
 const TipContent = styled.p`
-  color: #8C7E58;
+  color: #8c7e58;
   font-size: 1rem;
   line-height: 1.7;
 

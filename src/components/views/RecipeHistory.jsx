@@ -23,11 +23,7 @@ const RecipeHistory = () => {
       setLoading(true)
       const recipesRef = collection(db, 'recipes')
 
-      let q = query(
-        recipesRef,
-        where('userId', '==', user.uid),
-
-      )
+      let q = query(recipesRef, where('userId', '==', user.uid))
 
       const querySnapshot = await getDocs(q)
       const fetchedRecipes = querySnapshot.docs.map(doc => ({
@@ -51,7 +47,7 @@ const RecipeHistory = () => {
     }
   }, [user, setNotificationMessage, setNotificationType, setShowNotification])
 
-  const handleDelete = async (recipeId) => {
+  const handleDelete = async recipeId => {
     try {
       await deleteDoc(doc(db, 'recipes', recipeId))
       setRecipes(prevRecipes => prevRecipes.filter(recipe => recipe.id !== recipeId))
@@ -66,7 +62,7 @@ const RecipeHistory = () => {
     }
   }
 
-  const handleEdit = (recipe) => {
+  const handleEdit = recipe => {
     setSelectedRecipe(recipe)
     setShowForm(true)
   }
@@ -92,44 +88,28 @@ const RecipeHistory = () => {
           <FilterSection>
             <FilterLabel>Näytä:</FilterLabel>
             <FilterButtons>
-              <FilterButton
-                $active={dateFilter === 'all'}
-                onClick={() => setDateFilter('all')}
-              >
+              <FilterButton $active={dateFilter === 'all'} onClick={() => setDateFilter('all')}>
                 Kaikki
               </FilterButton>
-              <FilterButton
-                $active={dateFilter === 'week'}
-                onClick={() => setDateFilter('week')}
-              >
+              <FilterButton $active={dateFilter === 'week'} onClick={() => setDateFilter('week')}>
                 Viikko
               </FilterButton>
-              <FilterButton
-                $active={dateFilter === 'month'}
-                onClick={() => setDateFilter('month')}
-              >
+              <FilterButton $active={dateFilter === 'month'} onClick={() => setDateFilter('month')}>
                 Kuukausi
               </FilterButton>
-              <FilterButton
-                $active={dateFilter === 'year'}
-                onClick={() => setDateFilter('year')}
-              >
+              <FilterButton $active={dateFilter === 'year'} onClick={() => setDateFilter('year')}>
                 Vuosi
               </FilterButton>
             </FilterButtons>
           </FilterSection>
 
-          <AddRecipeButton onClick={() => setShowForm(true)}>
-            + Lisää uusi resepti
-          </AddRecipeButton>
+          <AddRecipeButton onClick={() => setShowForm(true)}>+ Lisää uusi resepti</AddRecipeButton>
         </ControlPanel>
 
         {!user ? (
           <LoginPrompt>
             <LoginIcon>🔐</LoginIcon>
-            <LoginMessage>
-              Kirjaudu sisään nähdäksesi leipomishistoriasi
-            </LoginMessage>
+            <LoginMessage>Kirjaudu sisään nähdäksesi leipomishistoriasi</LoginMessage>
           </LoginPrompt>
         ) : (
           <RecipeGrid>
@@ -291,14 +271,14 @@ const FilterButton = styled.button`
   padding: 0.5rem 1rem;
   border: 1px solid rgb(139, 125, 91);
   border-radius: 6px;
-  background-color: ${props => props.$active ? 'rgb(139, 125, 91)' : 'transparent'};
-  color: ${props => props.$active ? 'white' : 'rgb(139, 125, 91)'};
+  background-color: ${props => (props.$active ? 'rgb(139, 125, 91)' : 'transparent')};
+  color: ${props => (props.$active ? 'white' : 'rgb(139, 125, 91)')};
   cursor: pointer;
   transition: all 0.2s ease;
   font-weight: 500;
 
   &:hover {
-    background-color: ${props => props.$active ? 'rgb(117, 106, 78)' : 'rgba(139, 125, 91, 0.1)'};
+    background-color: ${props => (props.$active ? 'rgb(117, 106, 78)' : 'rgba(139, 125, 91, 0.1)')};
   }
 
   @media (max-width: 768px) {
@@ -323,7 +303,7 @@ const AddRecipeButton = styled.button`
   &:hover {
     background-color: rgb(117, 106, 78);
     transform: translateY(-2px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 768px) {

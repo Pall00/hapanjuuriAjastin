@@ -3,9 +3,12 @@ import globals from 'globals'
 import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
+import prettier from 'eslint-plugin-prettier'
+import eslintConfigPrettier from 'eslint-config-prettier'
 
 export default [
   { ignores: ['dist'] },
+  eslintConfigPrettier,
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
@@ -13,6 +16,7 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.es2021,
+        process: 'readonly',
       },
       parserOptions: {
         ecmaVersion: 'latest',
@@ -27,21 +31,20 @@ export default [
       react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      prettier: prettier,
     },
     rules: {
       ...js.configs.recommended.rules,
       ...react.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
+      'prettier/prettier': ['error'],
       'react/jsx-no-target-blank': 'off',
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
-      'indent': ['error', 2],
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      //indent: ['error', 2],
       'linebreak-style': ['error', 'unix'],
-      'quotes': ['error', 'single'],
-      'semi': ['error', 'never'],
+      quotes: ['error', 'single'],
+      semi: ['error', 'never'],
       'comma-dangle': ['error', 'always-multiline'],
       'no-trailing-spaces': 'error',
       'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
@@ -49,8 +52,8 @@ export default [
       'array-bracket-spacing': ['error', 'never'],
       'computed-property-spacing': ['error', 'never'],
 
-      'react/jsx-indent': ['error', 2],
-      'react/jsx-indent-props': ['error', 2],
+      //'react/jsx-indent': ['error', 2],
+      //'react/jsx-indent-props': ['error', 2],
       'react/jsx-max-props-per-line': ['error', { maximum: 1, when: 'multiline' }],
       'react/jsx-first-prop-new-line': ['error', 'multiline'],
       'react/jsx-closing-bracket-location': ['error', 'line-aligned'],

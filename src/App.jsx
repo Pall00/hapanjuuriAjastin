@@ -10,7 +10,7 @@ import RecipeHistory from './components/views/RecipeHistory'
 import { AuthProvider } from './contexts/AuthContext'
 import { TimerProvider } from './providers/TimerProvider'
 
-const basename = import.meta.env.DEV ? '/' : '/hapanjuuri' 
+const basename = import.meta.env.DEV ? '/' : '/hapanjuuri'
 
 const App = () => {
   return (

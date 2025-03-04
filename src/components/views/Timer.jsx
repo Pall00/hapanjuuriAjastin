@@ -3,17 +3,20 @@ import styled from 'styled-components'
 import { useTimer } from '../../hooks/useTimer'
 
 const Timer = () => {
-  const breadMakingSteps = useMemo(() => [
-    { name: 'Jauho&Vesi', duration: 45 * 60, icon: '🌾' },
-    { name: 'Juuri&Taikina + venytys ja taittelu ', duration: 30 * 60, icon: '🥖' },
-    { name: 'Coil fold 1 kerta', duration: 30 * 60, icon: '🔄' },
-    { name: 'Coil fold 2 kerta', duration: 30 * 60, icon: '🔄' },
-    { name: 'Coil fold 3 kerta', duration: 30 * 60, icon: '🔄' },
-    { name: 'Coil fold 4 kerta', duration: 30 * 60, icon: '🔄' },
-    { name: 'Taikinan kohotus', duration: 240 * 60, icon: '⏳' },
-    { name: 'Esimuotoilu ja kylmäkohotus', duration: 480 * 60, icon: '❄️' },
-    { name: 'Taikinan viilto ja paistaminen', duration: 20 * 60, icon: '🔥' },
-  ], [])
+  const breadMakingSteps = useMemo(
+    () => [
+      { name: 'Jauho&Vesi', duration: 45 * 60, icon: '🌾' },
+      { name: 'Juuri&Taikina + venytys ja taittelu ', duration: 30 * 60, icon: '🥖' },
+      { name: 'Coil fold 1 kerta', duration: 30 * 60, icon: '🔄' },
+      { name: 'Coil fold 2 kerta', duration: 30 * 60, icon: '🔄' },
+      { name: 'Coil fold 3 kerta', duration: 30 * 60, icon: '🔄' },
+      { name: 'Coil fold 4 kerta', duration: 30 * 60, icon: '🔄' },
+      { name: 'Taikinan kohotus', duration: 240 * 60, icon: '⏳' },
+      { name: 'Esimuotoilu ja kylmäkohotus', duration: 480 * 60, icon: '❄️' },
+      { name: 'Taikinan viilto ja paistaminen', duration: 20 * 60, icon: '🔥' },
+    ],
+    [],
+  )
 
   const {
     currentStepIndex,
@@ -35,7 +38,7 @@ const Timer = () => {
     }
   }, [currentTime, currentStepIndex, setCurrentTime, setCompletedSteps, breadMakingSteps])
 
-  const formatTime = (seconds) => {
+  const formatTime = seconds => {
     const hours = Math.floor(seconds / 3600)
     const minutes = Math.floor((seconds % 3600) / 60)
     const secs = seconds % 60
@@ -78,14 +81,14 @@ const Timer = () => {
     setEstimatedEndTime(null)
   }
 
-  const handleStepSelect = (index) => {
+  const handleStepSelect = index => {
     setIsRunning(false)
     setCurrentStepIndex(index)
     setCurrentTime(breadMakingSteps[index].duration)
     setEstimatedEndTime(null)
   }
 
-  const toggleStepCompletion = (index) => {
+  const toggleStepCompletion = index => {
     const newCompletedSteps = [...completedSteps]
     newCompletedSteps[index] = !newCompletedSteps[index]
     setCompletedSteps(newCompletedSteps)
@@ -98,18 +101,17 @@ const Timer = () => {
           <Title>Leivänteko aikataulu</Title>
           <CurrentStep>
             <StepIcon>{breadMakingSteps[currentStepIndex].icon}</StepIcon>
-            <StepName> <p>{breadMakingSteps[currentStepIndex].name}</p></StepName>
+            <StepName>
+              {' '}
+              <p>{breadMakingSteps[currentStepIndex].name}</p>
+            </StepName>
           </CurrentStep>
         </Header>
 
         <TimerSection>
-          <TimerDisplay $isRunning={isRunning}>
-            {formatTime(currentTime)}
-          </TimerDisplay>
+          <TimerDisplay $isRunning={isRunning}>{formatTime(currentTime)}</TimerDisplay>
           {estimatedEndTime && (
-            <EstimatedTime>
-              Valmis: {estimatedEndTime.toLocaleTimeString()}
-            </EstimatedTime>
+            <EstimatedTime>Valmis: {estimatedEndTime.toLocaleTimeString()}</EstimatedTime>
           )}
           <TotalSteps>
             Vaihe {currentStepIndex + 1} / {breadMakingSteps.length}
@@ -124,7 +126,9 @@ const Timer = () => {
             </>
           ) : (
             <>
-              <StartButton onClick={startTimer} disabled={currentTime === 0}>Aloita</StartButton>
+              <StartButton onClick={startTimer} disabled={currentTime === 0}>
+                Aloita
+              </StartButton>
               <ResetButton onClick={resetTimer}>Nollaa</ResetButton>
             </>
           )}
@@ -179,8 +183,8 @@ const Container = styled.div`
 `
 
 const MainTimer = styled.div`
-  background-color: #FFF8E8;
-  border: 1px solid #FAECD0;
+  background-color: #fff8e8;
+  border: 1px solid #faecd0;
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -196,7 +200,7 @@ const Header = styled.div`
   text-align: center;
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 2px solid #E7DFC6;
+  border-bottom: 2px solid #e7dfc6;
 
   @media (max-width: 768px) {
     margin-bottom: 1rem;
@@ -205,7 +209,7 @@ const Header = styled.div`
 `
 
 const Title = styled.h2`
-  color: #8B7D5B;
+  color: #8b7d5b;
   font-size: 2.2rem;
   margin: 0 0 1.5rem 0;
   font-weight: 700;
@@ -221,7 +225,7 @@ const CurrentStep = styled.div`
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  color: #8B7D5B;
+  color: #8b7d5b;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -234,12 +238,14 @@ const StepCard = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  background-color: ${props => props.$active ? '#FFF8E8' : '#F5F1E3'};
-  border: 1px solid ${props => props.$active ? '#FAECD0' : '#E7DFC6'};
+  background-color: ${props => (props.$active ? '#FFF8E8' : '#F5F1E3')};
+  border: 1px solid ${props => (props.$active ? '#FAECD0' : '#E7DFC6')};
   border-radius: 8px;
   transition: all 0.2s ease;
-  
-  ${props => props.$completed && `
+
+  ${props =>
+    props.$completed &&
+    `
     border-color: #A5D6A7;
     background-color: #F1F8F1;
   `}
@@ -249,7 +255,6 @@ const StepCard = styled.div`
     flex-direction: column;
     gap: 0.5rem;
   }
-
 `
 
 const StepInfo = styled.div`
@@ -284,7 +289,7 @@ const StepDetails = styled.div`
 `
 
 const StepTitle = styled.div`
-  color:rgb(139, 125, 91);
+  color: rgb(139, 125, 91);
   font-weight: 600;
   margin-bottom: 0.25rem;
 
@@ -294,10 +299,10 @@ const StepTitle = styled.div`
 `
 
 const TotalSteps = styled.div`
-   font-size: 1.1rem;
-   color: #8B7D5B;
+  font-size: 1.1rem;
+  color: #8b7d5b;
 
-   @media (max-width: 768px) {
+  @media (max-width: 768px) {
     font-size: 0.9rem;
   }
 `
@@ -320,7 +325,7 @@ const StepIcon = styled.div`
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background-color:rgb(245, 241, 227);
+  background-color: rgb(245, 241, 227);
 
   @media (max-width: 768px) {
     font-size: 1.5rem;
@@ -330,7 +335,7 @@ const StepIcon = styled.div`
 `
 
 const StepName = styled.div`
-  color:rgb(139, 125, 91);
+  color: rgb(139, 125, 91);
   font-size: 1.2rem;
   font-weight: 600;
   text-align: center;
@@ -343,7 +348,7 @@ const StepName = styled.div`
 
 const StepDuration = styled.div`
   font-size: 0.9rem;
-  color:rgb(139, 125, 91);
+  color: rgb(139, 125, 91);
   opacity: 0.8;
 
   @media (max-width: 768px) {
@@ -365,7 +370,7 @@ const TimerDisplay = styled.div`
   background-color: white;
   padding: 1.5rem 2.5rem;
   border-radius: 12px;
-  color: ${props => props.$isRunning ? '#4CAF50' : '#8B7D5B'};
+  color: ${props => (props.$isRunning ? '#4CAF50' : '#8B7D5B')};
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: color 0.3s ease;
 
@@ -377,7 +382,7 @@ const TimerDisplay = styled.div`
 `
 
 const Button = styled.button`
-   padding: 0.8rem 2rem;
+  padding: 0.8rem 2rem;
   border-radius: 8px;
   border: none;
   font-size: 1.1rem;
@@ -385,12 +390,12 @@ const Button = styled.button`
   cursor: pointer;
   transition: all 0.2s ease;
   min-width: 120px;
-  
+
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
-  
+
   &:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -416,7 +421,7 @@ const ButtonContainer = styled.div`
 
 const EstimatedTime = styled.div`
   font-size: 1.2rem;
-  color: #8B7D5B;
+  color: #8b7d5b;
   font-weight: 500;
 
   @media (max-width: 768px) {
@@ -425,42 +430,41 @@ const EstimatedTime = styled.div`
 `
 
 const StopButton = styled(Button)`
-   background-color: #F44336;
+  background-color: #f44336;
   color: white;
-  
+
   &:hover {
-    background-color: #E53935;
+    background-color: #e53935;
   }
 `
 
 const StartButton = styled(Button)`
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
-  
+
   &:hover:not(:disabled) {
-    background-color: #43A047;
+    background-color: #43a047;
   }
 `
 
 const ResetButton = styled(Button)`
-  background-color: #8B7D5B;
+  background-color: #8b7d5b;
   color: white;
-  
+
   &:hover {
-    background-color: #756A4E;
+    background-color: #756a4e;
   }
-  
 `
 
 const CompleteButton = styled(Button)`
   padding: 0.6rem 1rem;
-  background-color: ${props => props.$completed ? '#4CAF50' : 'white'};
-  color: ${props => props.$completed ? 'white' : '#4CAF50'};
+  background-color: ${props => (props.$completed ? '#4CAF50' : 'white')};
+  color: ${props => (props.$completed ? 'white' : '#4CAF50')};
   border: 2px solid rgb(76, 175, 80);
   min-width: auto;
-  
+
   &:hover {
-    background-color: ${props => props.$completed ? '#43A047' : '#F1F8F1'};
+    background-color: ${props => (props.$completed ? '#43A047' : '#F1F8F1')};
   }
 
   @media (max-width: 768px) {

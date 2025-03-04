@@ -45,15 +45,47 @@ const Header = () => {
         </MobileMenuButton>
 
         <Nav $isOpen={isMobileMenuOpen}>
-          <NavLink to="/laskuri" $isActive={location.pathname === '/laskuri'} onClick={() => setIsMobileMenuOpen(false)} >Laskuri</NavLink>
-          <NavLink to="/ajastin" $isActive={location.pathname === '/ajastin'} onClick={() => setIsMobileMenuOpen(false)}>Ajastin</NavLink>
-          <NavLink to="/reseptit" $isActive={location.pathname === '/reseptit'} onClick={() => setIsMobileMenuOpen(false)}>Reseptit</NavLink>
-          <NavLink to="/ohje" $isActive={location.pathname === '/ohje'} onClick={() => setIsMobileMenuOpen(false)}>Ohje</NavLink>
-          <NavLink to="/" $isActive={location.pathname === '/'} onClick={() => setIsMobileMenuOpen(false)}>Info</NavLink>
+          <NavLink
+            to="/laskuri"
+            $isActive={location.pathname === '/laskuri'}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Laskuri
+          </NavLink>
+          <NavLink
+            to="/ajastin"
+            $isActive={location.pathname === '/ajastin'}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Ajastin
+          </NavLink>
+          <NavLink
+            to="/reseptit"
+            $isActive={location.pathname === '/reseptit'}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Reseptit
+          </NavLink>
+          <NavLink
+            to="/ohje"
+            $isActive={location.pathname === '/ohje'}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Ohje
+          </NavLink>
+          <NavLink
+            to="/"
+            $isActive={location.pathname === '/'}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Info
+          </NavLink>
           {user ? (
             <AuthButton onClick={handleLogout}>Kirjaudu ulos</AuthButton>
           ) : (
-            <NavLink to="/auth" $isActive={location.pathname === '/auth'}>Kirjaudu</NavLink>
+            <NavLink to="/auth" $isActive={location.pathname === '/auth'}>
+              Kirjaudu
+            </NavLink>
           )}
         </Nav>
         {showNotification && (
@@ -74,12 +106,11 @@ const HeaderContainer = styled.header`
   top: 0;
   left: 0;
   right: 0;
-  background-color:rgb(255, 248, 232);
+  background-color: rgb(255, 248, 232);
   border-bottom: 1px solid rgb(250, 236, 208);
-  box-shadow: ${props => props.$isScrolled ? '0 4px 12px rgba(0,0,0,0.1)' : 'none'};
+  box-shadow: ${props => (props.$isScrolled ? '0 4px 12px rgba(0,0,0,0.1)' : 'none')};
   transition: all 0.3s ease;
   z-index: 1000;
-  
 `
 
 const Container = styled.div`
@@ -106,10 +137,10 @@ const Logo = styled(RouterLink)`
 
   &:hover {
     transform: scale(1.02);
-    
+
     @media (max-width: 768px) {
-    gap: 0.5rem;
-  }
+      gap: 0.5rem;
+    }
   }
 `
 
@@ -129,7 +160,7 @@ const LogoIcon = styled.span`
 const LogoText = styled.h1`
   font-weight: 700;
   font-size: 2.2rem;
-  color: #8B7D5B;
+  color: #8b7d5b;
   margin: 0;
 
   @media (max-width: 768px) {
@@ -142,7 +173,7 @@ const MobileMenuButton = styled.button`
   background: none;
   border: none;
   font-size: 2rem;
-  color: #8B7D5B;
+  color: #8b7d5b;
   cursor: pointer;
   z-index: 1001;
 
@@ -152,12 +183,12 @@ const MobileMenuButton = styled.button`
 `
 
 const Nav = styled.nav`
-    display: flex;
-    gap: 2rem;
-    align-items: center;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
 
-    @media (max-width: 768px) {
-      position: fixed;
+  @media (max-width: 768px) {
+    position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
@@ -166,54 +197,53 @@ const Nav = styled.nav`
     flex-direction: column;
     gap: 1rem;
     padding: 5rem 2rem;
-    transform: translateX(${props => props.$isOpen ? '0' : '100%'});
+    transform: translateX(${props => (props.$isOpen ? '0' : '100%')});
     transition: transform 0.3s ease;
-    box-shadow: ${props => props.$isOpen ? '-4px 0 12px rgba(0,0,0,0.1)' : 'none'};
-    }
+    box-shadow: ${props => (props.$isOpen ? '-4px 0 12px rgba(0,0,0,0.1)' : 'none')};
+  }
 `
 
 const NavLink = styled(RouterLink)`
   text-decoration: none;
-  color: #8B7D5B;
-  font-weight: ${props => props.$isActive ? '600' : '500'};
+  color: #8b7d5b;
+  font-weight: ${props => (props.$isActive ? '600' : '500')};
   font-size: 1.8rem;
   padding: 0.5rem 1rem;
   border-radius: 8px;
   transition: all 0.2s ease;
   position: relative;
-  
 
   &::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 50%;
-    width: ${props => props.$isActive ? '100%' : '0'};
+    width: ${props => (props.$isActive ? '100%' : '0')};
     height: 2px;
-    background-color: #8B7D5B;
+    background-color: #8b7d5b;
     transform: translateX(-50%);
     transition: width 0.2s ease;
   }
-    
-    &:hover {
-      color: #8B7D5B;
-      background-color: rgba(139, 125, 91, 0.08);
 
-      &::after {
+  &:hover {
+    color: #8b7d5b;
+    background-color: rgba(139, 125, 91, 0.08);
+
+    &::after {
       width: 100%;
     }
-}
+  }
 
-    @media (max-width: 768px) {
-      font-size: 1.4rem;
-      width: 100%;
-      text-align: center;
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+    width: 100%;
+    text-align: center;
   }
 `
 
 const AuthButton = styled.button`
   text-decoration: none;
-  color: #8B7D5B;
+  color: #8b7d5b;
   font-weight: 500;
   font-size: 1.8rem;
   padding: 0.5rem 1rem;
@@ -222,9 +252,9 @@ const AuthButton = styled.button`
   border-radius: 8px;
   transition: all 0.2s ease;
   cursor: pointer;
-  
+
   &:hover {
-    color: #8B7D5B;
+    color: #8b7d5b;
     background-color: rgba(139, 125, 91, 0.08);
   }
 

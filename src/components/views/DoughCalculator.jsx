@@ -11,39 +11,47 @@ const DoughCalculator = () => {
   const hydrationLevels = [
     {
       percent: 60,
-      description: 'Erittäin matala hydraatio: Jäykkä taikina, erittäin helppo käsitellä. Tuottaa tiiviin, tasaisen ja hieman kuivemman leivän. Sopii hyvin aloittelijoille ja täysjyväjauhoille.',
+      description:
+        'Erittäin matala hydraatio: Jäykkä taikina, erittäin helppo käsitellä. Tuottaa tiiviin, tasaisen ja hieman kuivemman leivän. Sopii hyvin aloittelijoille ja täysjyväjauhoille.',
     },
     {
       percent: 65,
-      description: 'Matala hydraatio: Helpompi käsitellä, tiiviimpi rakenne. Sopii aloittelijoille ja tuottaa tiiviin ja tasaisen leivän rakenteen. Hyvä valinta ensimmäisille leiville.',
+      description:
+        'Matala hydraatio: Helpompi käsitellä, tiiviimpi rakenne. Sopii aloittelijoille ja tuottaa tiiviin ja tasaisen leivän rakenteen. Hyvä valinta ensimmäisille leiville.',
     },
     {
       percent: 70,
-      description: 'Keskitason hydraatio: Hyvä tasapaino käsiteltävyyden ja ilmavuuden välillä. Tuottaa klassisen hapanjuurileivän rakenteen. Suosittu valinta päivittäiseen leipomiseen.',
+      description:
+        'Keskitason hydraatio: Hyvä tasapaino käsiteltävyyden ja ilmavuuden välillä. Tuottaa klassisen hapanjuurileivän rakenteen. Suosittu valinta päivittäiseen leipomiseen.',
     },
     {
       percent: 75,
-      description: 'Korkea hydraatio: Ilmavampi rakenne, isommat reiät. Vaatii enemmän taitoa käsittelyssä mutta tuottaa mehevän leivän. Sopii kokeneemmille leipojille.',
+      description:
+        'Korkea hydraatio: Ilmavampi rakenne, isommat reiät. Vaatii enemmän taitoa käsittelyssä mutta tuottaa mehevän leivän. Sopii kokeneemmille leipojille.',
     },
     {
       percent: 80,
-      description: 'Erittäin korkea hydraatio: Maksimaalinen ilmavuus, suuret reiät. Haastava käsitellä, tarkoitettu kokeneille leipojille. Tuottaa erittäin mehevän leivän avoimella huokosrakenteella.',
+      description:
+        'Erittäin korkea hydraatio: Maksimaalinen ilmavuus, suuret reiät. Haastava käsitellä, tarkoitettu kokeneille leipojille. Tuottaa erittäin mehevän leivän avoimella huokosrakenteella.',
     },
     {
       percent: 85,
-      description: 'Superhydraatio: Erittäin märkä taikina, vaatii erityistekniikkaa käsittelyssä. Tuottaa erittäin ilmavan ja kostean leivän. Suositellaan vain erittäin kokeneille leipojille.',
+      description:
+        'Superhydraatio: Erittäin märkä taikina, vaatii erityistekniikkaa käsittelyssä. Tuottaa erittäin ilmavan ja kostean leivän. Suositellaan vain erittäin kokeneille leipojille.',
     },
     {
       percent: 90,
-      description: 'Ultrahydraatio: Äärimmäisen märkä taikina, erittäin vaikea käsitellä. Vaatii erikoistekniikoita ja paljon kokemusta. Tuottaa poikkeuksellisen ilmavan ja kostean leivän.',
+      description:
+        'Ultrahydraatio: Äärimmäisen märkä taikina, erittäin vaikea käsitellä. Vaatii erikoistekniikoita ja paljon kokemusta. Tuottaa poikkeuksellisen ilmavan ja kostean leivän.',
     },
     {
       percent: 95,
-      description: 'Äärimmäinen hydraatio: Lähes nestemäinen taikina. Vaatii erityisiä käsittelytekniikoita ja astioita. Vain kokeilunhaluisille eksperteille. Tuottaa hyvin kostean ja erikoisrakenteisen leivän.',
+      description:
+        'Äärimmäinen hydraatio: Lähes nestemäinen taikina. Vaatii erityisiä käsittelytekniikoita ja astioita. Vain kokeilunhaluisille eksperteille. Tuottaa hyvin kostean ja erikoisrakenteisen leivän.',
     },
   ]
 
-  const setHydrationLevel = (percent) => {
+  const setHydrationLevel = percent => {
     setActiveHydration(percent)
     const newWaterAmount = Math.round((flourAmount * percent) / 100)
     setWaterAmount(newWaterAmount)
@@ -64,7 +72,7 @@ const DoughCalculator = () => {
   }
 
   const calculateWaterPersent = () => {
-    return (waterAmount / flourAmount * 100).toFixed(1)
+    return ((waterAmount / flourAmount) * 100).toFixed(1)
   }
 
   return (
@@ -87,7 +95,7 @@ const DoughCalculator = () => {
                   min="100"
                   max="1000"
                   value={flourAmount}
-                  onChange={(e) => setFlourAmount(Number(e.target.value))}
+                  onChange={e => setFlourAmount(Number(e.target.value))}
                 />
                 <Value>{flourAmount} g</Value>
               </SliderWrapper>
@@ -97,7 +105,7 @@ const DoughCalculator = () => {
                   min="100"
                   max="2000"
                   value={flourAmount}
-                  onChange={(e) => setFlourAmount(Number(e.target.value))}
+                  onChange={e => setFlourAmount(Number(e.target.value))}
                 />
                 <Unit>g</Unit>
               </InputWrapper>
@@ -116,7 +124,7 @@ const DoughCalculator = () => {
                   min={flourAmount * 0.5}
                   max={flourAmount * 0.9}
                   value={waterAmount}
-                  onChange={(e) => setWaterAmount(Number(e.target.value))}
+                  onChange={e => setWaterAmount(Number(e.target.value))}
                 />
                 <Value>{waterAmount} g</Value>
               </SliderWrapper>
@@ -126,7 +134,7 @@ const DoughCalculator = () => {
                   min={Math.floor(flourAmount * 0.5)}
                   max={Math.ceil(flourAmount * 0.9)}
                   value={waterAmount}
-                  onChange={(e) => setWaterAmount(Number(e.target.value))}
+                  onChange={e => setWaterAmount(Number(e.target.value))}
                 />
                 <Unit>g</Unit>
               </InputWrapper>
@@ -145,7 +153,7 @@ const DoughCalculator = () => {
                   min={flourAmount * 0.1}
                   max={flourAmount * 0.5}
                   value={starterAmount}
-                  onChange={(e) => setStarterAmount(Number(e.target.value))}
+                  onChange={e => setStarterAmount(Number(e.target.value))}
                 />
                 <Value>{starterAmount} g</Value>
               </SliderWrapper>
@@ -155,7 +163,7 @@ const DoughCalculator = () => {
                   min={Math.floor(flourAmount * 0.1)}
                   max={Math.ceil(flourAmount * 0.5)}
                   value={starterAmount}
-                  onChange={(e) => setStarterAmount(Number(e.target.value))}
+                  onChange={e => setStarterAmount(Number(e.target.value))}
                 />
                 <Unit>g</Unit>
               </InputWrapper>
@@ -166,7 +174,7 @@ const DoughCalculator = () => {
         <HydrationSection>
           <HydrationTitle>Valitse hydraatiotaso</HydrationTitle>
           <HydrationButtons>
-            {hydrationLevels.map((level) => (
+            {hydrationLevels.map(level => (
               <HydrationButton
                 key={level.percent}
                 onClick={() => setHydrationLevel(level.percent)}
@@ -239,7 +247,7 @@ const Header = styled.div`
 `
 
 const Title = styled.h2`
-  color: #8B7D5B;
+  color: #8b7d5b;
   font-size: 2.2rem;
   margin: 0 0 1.5rem 0;
   font-weight: 700;
@@ -275,7 +283,7 @@ const SliderCard = styled.div`
   background-color: rgb(245, 239, 217);
   border: 1px solid rgb(231, 223, 198);
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -315,8 +323,8 @@ const SliderWrapper = styled.div`
 
 const StyledSlider = styled.input.attrs(props => ({
   style: {
-    background: `linear-gradient(to right, rgb(231, 197, 124) ${(props.value - props.min) / (props.max - props.min) * 100}%,
-                rgb(224, 224, 224) ${(props.value - props.min) / (props.max - props.min) * 100}%)`,
+    background: `linear-gradient(to right, rgb(231, 197, 124) ${((props.value - props.min) / (props.max - props.min)) * 100}%,
+                rgb(224, 224, 224) ${((props.value - props.min) / (props.max - props.min)) * 100}%)`,
   },
 }))`
   width: 100%;
@@ -325,7 +333,7 @@ const StyledSlider = styled.input.attrs(props => ({
   -webkit-appearance: none;
   border-radius: 10px;
   transition: all 0.3s ease;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -334,7 +342,7 @@ const StyledSlider = styled.input.attrs(props => ({
     border-radius: 50%;
     background: rgb(139, 125, 91);
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease;
   }
 
@@ -349,7 +357,7 @@ const StyledSlider = styled.input.attrs(props => ({
     border-radius: 50%;
     background: rgb(139, 125, 91);
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   }
 
   @media (max-width: 768px) {
@@ -385,7 +393,7 @@ const ResultsCard = styled.div`
   border: 1px solid rgb(231, 223, 198);
   border-radius: 8px;
   padding: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -453,7 +461,7 @@ const ResetButton = styled.button`
   &:hover {
     background-color: rgb(117, 106, 78);
     transform: translateY(-2px);
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   }
 
   &:active {
@@ -492,15 +500,15 @@ const InputWrapper = styled.div`
 const NumberInput = styled.input`
   width: 80px;
   padding: 0.5rem;
-  border: 1px solid #E7DFC6;
+  border: 1px solid #e7dfc6;
   border-radius: 6px;
   font-size: 1rem;
-  color: #8B7D5B;
+  color: #8b7d5b;
   text-align: right;
-  
+
   &:focus {
     outline: none;
-    border-color: #8B7D5B;
+    border-color: #8b7d5b;
   }
 
   &::-webkit-inner-spin-button,
@@ -514,7 +522,7 @@ const NumberInput = styled.input`
 `
 
 const Unit = styled.span`
-  color: #8B7D5B;
+  color: #8b7d5b;
   font-weight: 600;
   min-width: 20px;
 `
@@ -525,7 +533,7 @@ const HydrationSection = styled.div`
   background-color: rgb(245, 239, 217);
   border: 1px solid rgb(231, 223, 198);
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -551,8 +559,8 @@ const HydrationButtons = styled.div`
 `
 
 const HydrationButton = styled.button`
-  background-color: ${props => props.$active ? 'rgb(139, 125, 91)' : 'white'};
-  color: ${props => props.$active ? 'white' : 'rgb(139, 125, 91)'};
+  background-color: ${props => (props.$active ? 'rgb(139, 125, 91)' : 'white')};
+  color: ${props => (props.$active ? 'white' : 'rgb(139, 125, 91)')};
   border: 2px solid rgb(139, 125, 91);
   padding: 0.5rem 1rem;
   border-radius: 6px;
@@ -563,7 +571,7 @@ const HydrationButton = styled.button`
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 768px) {

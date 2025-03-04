@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const RecipeCard = ({ recipe, onEdit, onDelete }) => {
   const [showActions, setShowActions] = useState(false)
 
-  const formatDate = (timestamp) => {
+  const formatDate = timestamp => {
     if (!timestamp) return ''
     try {
       const date = timestamp.toDate()
@@ -33,18 +33,13 @@ const RecipeCard = ({ recipe, onEdit, onDelete }) => {
           <DateLabel>{formatDate(recipe.createdAt)}</DateLabel>
           <Rating>
             {[...Array(5)].map((_, index) => (
-              <Star
-                key={index}
-                $filled={index < recipe.rating}
-              >
+              <Star key={index} $filled={index < recipe.rating}>
                 ★
               </Star>
             ))}
           </Rating>
         </HeaderContent>
-        <ActionsButton onClick={() => setShowActions(!showActions)}>
-          ⋮
-        </ActionsButton>
+        <ActionsButton onClick={() => setShowActions(!showActions)}>⋮</ActionsButton>
         {showActions && (
           <ActionsMenu>
             <ActionButton
@@ -105,8 +100,8 @@ const RecipeCard = ({ recipe, onEdit, onDelete }) => {
             <IngredientLabel>Kohotus aika</IngredientLabel>
             <IngredientValue>{recipe.riseTime} h</IngredientValue>
           </IngredientItem>
-        </IngredientGrid>.
-
+        </IngredientGrid>
+        .
         {recipe.notes && (
           <NotesSection>
             <NotesLabel>Muistiinpanot:</NotesLabel>
@@ -125,7 +120,9 @@ const Card = styled.div`
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:hover {
     transform: translateY(-2px);
@@ -159,7 +156,7 @@ const Rating = styled.div`
 `
 
 const Star = styled.span`
-  color: ${props => props.$filled ? '#FFD700' : '#E7DFC6'};
+  color: ${props => (props.$filled ? '#FFD700' : '#E7DFC6')};
   font-size: 1.2rem;
 `
 
@@ -170,7 +167,7 @@ const ActionsButton = styled.button`
   font-size: 1.5rem;
   cursor: pointer;
   padding: 0 0.5rem;
-  
+
   &:hover {
     color: rgb(117, 106, 78);
   }
@@ -196,13 +193,13 @@ const ActionButton = styled.button`
   border: none;
   text-align: left;
   cursor: pointer;
-  color: ${props => props.$delete ? '#DC3545' : 'rgb(139, 125, 91)'};
-  font-weight: ${props => props.$delete ? '600' : '500'};
-  
+  color: ${props => (props.$delete ? '#DC3545' : 'rgb(139, 125, 91)')};
+  font-weight: ${props => (props.$delete ? '600' : '500')};
+
   &:hover {
-    background-color: ${props => props.$delete ? '#FDE8E8' : 'rgb(245, 239, 217)'};
+    background-color: ${props => (props.$delete ? '#FDE8E8' : 'rgb(245, 239, 217)')};
   }
-  
+
   &:not(:last-child) {
     border-bottom: 1px solid rgb(231, 223, 198);
   }

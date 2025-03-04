@@ -14,7 +14,7 @@ const Auth = () => {
   const { signup, login } = useAuth()
   const navigate = useNavigate()
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault()
     setError('')
     setLoading(true)
@@ -49,12 +49,7 @@ const Auth = () => {
         <Form onSubmit={handleSubmit}>
           <InputGroup>
             <Label>Sähköposti</Label>
-            <Input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+            <Input type="email" value={email} onChange={e => setEmail(e.target.value)} required />
           </InputGroup>
 
           <InputGroup>
@@ -62,7 +57,7 @@ const Auth = () => {
             <Input
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value)}
               required
             />
           </InputGroup>
@@ -99,8 +94,8 @@ const Container = styled.div`
 `
 
 const AuthCard = styled.div`
-  background-color: #FFF8E8;
-  border: 1px solid #FAECD0;
+  background-color: #fff8e8;
+  border: 1px solid #faecd0;
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -111,7 +106,7 @@ const AuthCard = styled.div`
 `
 
 const Title = styled.h2`
-  color: #8B7D5B;
+  color: #8b7d5b;
   font-size: 2rem;
   text-align: center;
   margin-bottom: 2rem;
@@ -135,24 +130,24 @@ const InputGroup = styled.div`
 `
 
 const Label = styled.label`
-  color: #8B7D5B;
+  color: #8b7d5b;
   font-weight: 600;
 `
 
 const Input = styled.input`
   padding: 0.75rem;
-  border: 1px solid #E7DFC6;
+  border: 1px solid #e7dfc6;
   border-radius: 6px;
   font-size: 1rem;
-  
+
   &:focus {
     outline: none;
-    border-color: #8B7D5B;
+    border-color: #8b7d5b;
   }
 `
 
 const SubmitButton = styled.button`
-  background-color: #8B7D5B;
+  background-color: #8b7d5b;
   color: white;
   padding: 0.75rem;
   border: none;
@@ -161,12 +156,12 @@ const SubmitButton = styled.button`
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  
+
   &:hover:not(:disabled) {
-    background-color: #756A4E;
+    background-color: #756a4e;
     transform: translateY(-2px);
   }
-  
+
   &:disabled {
     opacity: 0.7;
     cursor: not-allowed;
@@ -174,8 +169,8 @@ const SubmitButton = styled.button`
 `
 
 const ErrorMessage = styled.div`
-  background-color: #FDECEA;
-  color: #B71C1C;
+  background-color: #fdecea;
+  color: #b71c1c;
   padding: 1rem;
   border-radius: 6px;
   margin-bottom: 1rem;
@@ -185,25 +180,25 @@ const ErrorMessage = styled.div`
 const ToggleText = styled.p`
   text-align: center;
   margin-top: 1.5rem;
-  color: #8B7D5B;
+  color: #8b7d5b;
 `
 
 const ToggleButton = styled.button`
   background: none;
   border: none;
-  color: #8B7D5B;
+  color: #8b7d5b;
   font-weight: 600;
   cursor: pointer;
   margin-left: 0.5rem;
-  
+
   &:hover {
     text-decoration: underline;
   }
 `
 
 const SuccessMessage = styled.div`
-  background-color: #E8F5E9;
-  color: #2E7D32;
+  background-color: #e8f5e9;
+  color: #2e7d32;
   padding: 1rem;
   border-radius: 6px;
   margin-bottom: 1rem;

@@ -38,9 +38,5 @@ export const TimerProvider = ({ children }) => {
     setEstimatedEndTime,
   }
 
-  return (
-    <TimerContext.Provider value={value}>
-      {children}
-    </TimerContext.Provider>
-  )
+  return <TimerContext.Provider value={value}>{children}</TimerContext.Provider>
 }

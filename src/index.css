@@ -1,18 +1,15 @@
-
-
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root{
---lighter: linear-gradient(159deg, rgb(45, 45, 58) 0%, rgb(43, 43, 53) 100%);
----background: #fdf9be;
-
+:root {
+  --lighter: linear-gradient(159deg, rgb(45, 45, 58) 0%, rgb(43, 43, 53) 100%);
+  ---background: #fdf9be;
 }
 
-body{
+body {
   width: 100%;
   background-color: var(---background);
   color: #fff;

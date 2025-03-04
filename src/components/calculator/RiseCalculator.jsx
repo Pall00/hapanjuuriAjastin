@@ -5,26 +5,29 @@ const RiseCalculator = () => {
   const [temperature, setTemperature] = useState('23')
   const [unit, setUnit] = useState('C')
 
-  const tempData = useMemo(() => [
-    { fahrenheit: 80, celsius: 27, timing: 5.5, rise: 30 },
-    { fahrenheit: 79, celsius: 26, timing: 5.5, rise: 30 },
-    { fahrenheit: 78, celsius: 25.5, timing: 6, rise: 40 },
-    { fahrenheit: 77, celsius: 25, timing: 6, rise: 40 },
-    { fahrenheit: 76, celsius: 24.5, timing: 7, rise: 50 },
-    { fahrenheit: 75, celsius: 24, timing: 7, rise: 50 },
-    { fahrenheit: 74, celsius: 23, timing: 8, rise: 55 },
-    { fahrenheit: 73, celsius: 22.5, timing: 9, rise: 60 },
-    { fahrenheit: 72, celsius: 22, timing: 10, rise: 65 },
-    { fahrenheit: 71, celsius: 21.5, timing: 11, rise: 70 },
-    { fahrenheit: 70, celsius: 21, timing: 12, rise: 75 },
-    { fahrenheit: 69, celsius: 20.5, timing: 13, rise: 80 },
-    { fahrenheit: 68, celsius: 20, timing: 14, rise: 85 },
-    { fahrenheit: 67, celsius: 19.5, timing: 15, rise: 90 },
-    { fahrenheit: 66, celsius: 19, timing: 16, rise: 95 },
-    { fahrenheit: 65, celsius: 18, timing: 16, rise: 100 },
-  ], [])
+  const tempData = useMemo(
+    () => [
+      { fahrenheit: 80, celsius: 27, timing: 5.5, rise: 30 },
+      { fahrenheit: 79, celsius: 26, timing: 5.5, rise: 30 },
+      { fahrenheit: 78, celsius: 25.5, timing: 6, rise: 40 },
+      { fahrenheit: 77, celsius: 25, timing: 6, rise: 40 },
+      { fahrenheit: 76, celsius: 24.5, timing: 7, rise: 50 },
+      { fahrenheit: 75, celsius: 24, timing: 7, rise: 50 },
+      { fahrenheit: 74, celsius: 23, timing: 8, rise: 55 },
+      { fahrenheit: 73, celsius: 22.5, timing: 9, rise: 60 },
+      { fahrenheit: 72, celsius: 22, timing: 10, rise: 65 },
+      { fahrenheit: 71, celsius: 21.5, timing: 11, rise: 70 },
+      { fahrenheit: 70, celsius: 21, timing: 12, rise: 75 },
+      { fahrenheit: 69, celsius: 20.5, timing: 13, rise: 80 },
+      { fahrenheit: 68, celsius: 20, timing: 14, rise: 85 },
+      { fahrenheit: 67, celsius: 19.5, timing: 15, rise: 90 },
+      { fahrenheit: 66, celsius: 19, timing: 16, rise: 95 },
+      { fahrenheit: 65, celsius: 18, timing: 16, rise: 100 },
+    ],
+    [],
+  )
 
-  const convertToCelsius = (fahrenheit) => (fahrenheit - 32) * 5/9
+  const convertToCelsius = fahrenheit => ((fahrenheit - 32) * 5) / 9
 
   const calculateRiseTime = useCallback(() => {
     if (!temperature) return null
@@ -59,7 +62,7 @@ const RiseCalculator = () => {
             <Input
               type="number"
               value={temperature}
-              onChange={(e) => setTemperature(e.target.value)}
+              onChange={e => setTemperature(e.target.value)}
               placeholder="Syötä lämpötila"
             />
           </InputWrapper>
@@ -67,10 +70,7 @@ const RiseCalculator = () => {
 
         <InputGroup>
           <Label>Yksikkö</Label>
-          <Select
-            value={unit}
-            onChange={(e) => setUnit(e.target.value)}
-          >
+          <Select value={unit} onChange={e => setUnit(e.target.value)}>
             <option value="C">Celsius</option>
             <option value="F">Fahrenheit</option>
           </Select>
@@ -91,7 +91,9 @@ const RiseCalculator = () => {
             </ResultItem>
             <ResultItem>
               <ResultLabel>Lämpötila:</ResultLabel>
-              <ResultValue>{result.celsius}°C / {result.fahrenheit}°F</ResultValue>
+              <ResultValue>
+                {result.celsius}°C / {result.fahrenheit}°F
+              </ResultValue>
             </ResultItem>
           </ResultGrid>
 
@@ -124,7 +126,7 @@ const Section = styled.div`
   background-color: rgb(245, 239, 217);
   border: 1px solid rgb(231, 223, 198);
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -172,12 +174,12 @@ const InputWrapper = styled.div`
 const Input = styled.input`
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #E7DFC6;
+  border: 1px solid #e7dfc6;
   border-radius: 6px;
   font-size: 1rem;
   color: rgb(139, 125, 91);
   background-color: white;
-  
+
   &:focus {
     outline: none;
     border-color: rgb(139, 125, 91);
@@ -187,12 +189,12 @@ const Input = styled.input`
 const Select = styled.select`
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #E7DFC6;
+  border: 1px solid #e7dfc6;
   border-radius: 6px;
   font-size: 1rem;
   color: rgb(139, 125, 91);
   background-color: white;
-  
+
   &:focus {
     outline: none;
     border-color: rgb(139, 125, 91);
@@ -203,7 +205,7 @@ const ResultCard = styled.div`
   background-color: white;
   padding: 1.5rem;
   border-radius: 8px;
-  border: 1px solid #E7DFC6;
+  border: 1px solid #e7dfc6;
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -228,7 +230,7 @@ const ResultItem = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid #E7DFC6;
+  border-bottom: 1px solid #e7dfc6;
 
   &:last-child {
     border-bottom: none;
@@ -247,7 +249,7 @@ const ResultValue = styled.span`
 
 const NotesCard = styled.div`
   background-color: rgb(255, 248, 232);
-  border: 1px solid #E7DFC6;
+  border: 1px solid #e7dfc6;
   border-radius: 6px;
   padding: 1rem;
   margin-top: 1rem;
@@ -271,10 +273,10 @@ const NotesItem = styled.li`
 `
 
 const ErrorMessage = styled.div`
-  color: #B71C1C;
+  color: #b71c1c;
   text-align: center;
   padding: 1rem;
-  background-color: #FDECEA;
+  background-color: #fdecea;
   border-radius: 6px;
   margin-top: 1rem;
 `

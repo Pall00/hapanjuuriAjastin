@@ -12,28 +12,32 @@ const RecipeForm = ({ onClose, recipe, onSave }) => {
   const [notificationType, setNotificationType] = useState('success')
 
   const [formData, setFormData] = useState(
-    recipe ? {
-      flourAmount: recipe.ingredients.flour,
-      waterAmount: recipe.ingredients.water,
-      starterAmount: recipe.ingredients.starter,
-      saltAmount: recipe.ingredients.salt,
-      hydrationLevel: recipe.hydrationLevel || Math.round((recipe.ingredients.water / recipe.ingredients.flour) * 100),
-      riseTime: recipe.riseTime,
-      rating: recipe.rating,
-      notes: recipe.notes || '',
-    } : {
-      flourAmount: 350,
-      waterAmount: 274,
-      starterAmount: 70,
-      saltAmount: 7,
-      hydrationLevel: 78,
-      riseTime: 8,
-      rating: 3,
-      notes: '',
-    },
+    recipe
+      ? {
+          flourAmount: recipe.ingredients.flour,
+          waterAmount: recipe.ingredients.water,
+          starterAmount: recipe.ingredients.starter,
+          saltAmount: recipe.ingredients.salt,
+          hydrationLevel:
+            recipe.hydrationLevel ||
+            Math.round((recipe.ingredients.water / recipe.ingredients.flour) * 100),
+          riseTime: recipe.riseTime,
+          rating: recipe.rating,
+          notes: recipe.notes || '',
+        }
+      : {
+          flourAmount: 350,
+          waterAmount: 274,
+          starterAmount: 70,
+          saltAmount: 7,
+          hydrationLevel: 78,
+          riseTime: 8,
+          rating: 3,
+          notes: '',
+        },
   )
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target
     setFormData(prev => ({
       ...prev,
@@ -41,7 +45,7 @@ const RecipeForm = ({ onClose, recipe, onSave }) => {
     }))
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault()
     if (!user) {
       setNotificationMessage('Kirjaudu sisään tallentaaksesi reseptin')
@@ -168,7 +172,6 @@ const RecipeForm = ({ onClose, recipe, onSave }) => {
               max="100"
             />
           </InputGroup>
-          
         </FormSection>
 
         <FormSection>
@@ -177,7 +180,7 @@ const RecipeForm = ({ onClose, recipe, onSave }) => {
           <RatingContainer>
             <Label>Onnistuminen (1-5)</Label>
             <RatingButtons>
-              {[1, 2, 3, 4, 5].map((rating) => (
+              {[1, 2, 3, 4, 5].map(rating => (
                 <RatingButton
                   key={rating}
                   type="button"
@@ -322,7 +325,7 @@ const Input = styled.input`
   border-radius: 6px;
   font-size: 1rem;
   color: rgb(139, 125, 91);
-  
+
   &:focus {
     outline: none;
     border-color: rgb(139, 125, 91);
@@ -344,13 +347,13 @@ const RatingButton = styled.button`
   height: 40px;
   border: 1px solid rgb(139, 125, 91);
   border-radius: 6px;
-  background-color: ${props => props.$active ? 'rgb(139, 125, 91)' : 'transparent'};
-  color: ${props => props.$active ? 'white' : 'rgb(139, 125, 91)'};
+  background-color: ${props => (props.$active ? 'rgb(139, 125, 91)' : 'transparent')};
+  color: ${props => (props.$active ? 'white' : 'rgb(139, 125, 91)')};
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
-    background-color: ${props => props.$active ? 'rgb(117, 106, 78)' : 'rgba(139, 125, 91, 0.1)'};
+    background-color: ${props => (props.$active ? 'rgb(117, 106, 78)' : 'rgba(139, 125, 91, 0.1)')};
   }
 `
 
@@ -362,7 +365,7 @@ const TextArea = styled.textarea`
   font-size: 1rem;
   color: rgb(139, 125, 91);
   resize: vertical;
-  
+
   &:focus {
     outline: none;
     border-color: rgb(139, 125, 91);
