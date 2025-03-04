@@ -21,7 +21,8 @@
 |       | 5    | Aloitettu reseptien lisäyksen tekoa                                                              |
 | 25.2. | 10   | Reseptien lisäys paranneltu                                                                      |
 | 3.3.  | 5    | Deploin kuntoon laitto raspi servulle.                                                           |
-| 4.3.  | 1    | Deploin parantelua                                                                               |
+| 4.3.  | 2    | Deploin parantelua                                                                               |
+|       | 6    | Tyylien refactorointia                                                                           |
 | 5.3.  | 2    | testaus                                                                                          |
 
 | yht | 00 | |

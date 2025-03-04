@@ -1,42 +1,13 @@
-import styled from 'styled-components'
+import { Container } from '../../styles/components/Layout'
+import { Title, SubTitle } from '../../styles/components/Typography'
 
 const Info = () => {
   return (
     <Container>
-      <Information>
-        <div>
-          <h2>Info</h2>
-          <p>Tämän sivun tarkoitus on auttaa sinua hapanjuurileivän valmistuksessa.</p>
-        </div>
-      </Information>
+      <Title>Info</Title>
+      <SubTitle>Tämän sivun tarkoitus on auttaa sinua hapanjuurileivän valmistuksessa.</SubTitle>
     </Container>
   )
 }
 
 export default Info
-
-const Container = styled.div`
-  align-items: center;
-  justify-content: space-between;
-  width: 40%;
-  margin: 0 auto;
-  padding: 1.5rem 0;
-  min-width: 320px;
-  margin-top: 100px;
-`
-const Information = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  h2 {
-    font-weight: 600;
-    font-size: 2.5rem;
-    color: rgb(148, 142, 89);
-  }
-  p {
-    font-weight: 600;
-    font-size: 1.5rem;
-    color: rgb(148, 142, 89);
-  }
-`

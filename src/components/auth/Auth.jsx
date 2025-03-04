@@ -2,6 +2,17 @@ import { useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
+import {
+  Container,
+  Title,
+  Form,
+  InputGroup,
+  Label,
+  Input,
+  PrimaryButton,
+  ErrorMessage,
+  SuccessMessage,
+} from '../../styles/components'
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true)
@@ -80,128 +91,37 @@ const Auth = () => {
 
 export default Auth
 
-const Container = styled.div`
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  margin-top: 100px;
-
-  @media (max-width: 768px) {
-    padding: 1rem;
-    margin-top: 80px;
-  }
-`
-
 const AuthCard = styled.div`
-  background-color: #fff8e8;
-  border: 1px solid #faecd0;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background-color: ${({ theme }) => theme.colors.background.paper};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: ${({ theme }) => theme.borderRadius.large};
+  padding: ${({ theme }) => theme.spacing(8)};
+  box-shadow: ${({ theme }) => theme.shadows.medium};
 
-  @media (max-width: 768px) {
-    padding: 1rem;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding: ${({ theme }) => theme.spacing(4)};
   }
 `
 
-const Title = styled.h2`
-  color: #8b7d5b;
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 2rem;
-
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-`
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-`
-
-const InputGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`
-
-const Label = styled.label`
-  color: #8b7d5b;
-  font-weight: 600;
-`
-
-const Input = styled.input`
-  padding: 0.75rem;
-  border: 1px solid #e7dfc6;
-  border-radius: 6px;
-  font-size: 1rem;
-
-  &:focus {
-    outline: none;
-    border-color: #8b7d5b;
-  }
-`
-
-const SubmitButton = styled.button`
-  background-color: #8b7d5b;
-  color: white;
-  padding: 0.75rem;
-  border: none;
-  border-radius: 6px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:hover:not(:disabled) {
-    background-color: #756a4e;
-    transform: translateY(-2px);
-  }
-
-  &:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-  }
-`
-
-const ErrorMessage = styled.div`
-  background-color: #fdecea;
-  color: #b71c1c;
-  padding: 1rem;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-  font-weight: 500;
+const SubmitButton = styled(PrimaryButton)`
+  margin-top: ${({ theme }) => theme.spacing(4)};
 `
 
 const ToggleText = styled.p`
   text-align: center;
-  margin-top: 1.5rem;
-  color: #8b7d5b;
+  margin-top: ${({ theme }) => theme.spacing(6)};
+  color: ${({ theme }) => theme.colors.text.primary};
 `
 
 const ToggleButton = styled.button`
   background: none;
   border: none;
-  color: #8b7d5b;
+  color: ${({ theme }) => theme.colors.primary.main};
   font-weight: 600;
   cursor: pointer;
-  margin-left: 0.5rem;
+  margin-left: ${({ theme }) => theme.spacing(2)};
 
   &:hover {
     text-decoration: underline;
   }
-`
-
-const SuccessMessage = styled.div`
-  background-color: #e8f5e9;
-  color: #2e7d32;
-  padding: 1rem;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-  font-weight: 500;
-  text-align: center;
 `
