@@ -1,5 +1,25 @@
 import { useState, useCallback, useMemo } from 'react'
-import styled from 'styled-components'
+import {
+  Section,
+  SectionTitle,
+  InputContainer,
+  InputGroup,
+  Label,
+  RiseInputWrapper,
+  Input,
+  Select,
+  ResultCard,
+  ResultTitle,
+  ResultsGrid,
+  ResultItem,
+  ResultLabel,
+  ResultValue,
+  NotesCard,
+  NotesTitle,
+  NotesList,
+  NotesItem,
+  ErrorMessage,
+} from '../../styles/pages/calculator'
 
 const RiseCalculator = () => {
   const [temperature, setTemperature] = useState('23')
@@ -58,14 +78,14 @@ const RiseCalculator = () => {
       <InputContainer>
         <InputGroup>
           <Label>Taikinan lämpötila</Label>
-          <InputWrapper>
+          <RiseInputWrapper>
             <Input
               type="number"
               value={temperature}
               onChange={e => setTemperature(e.target.value)}
               placeholder="Syötä lämpötila"
             />
-          </InputWrapper>
+          </RiseInputWrapper>
         </InputGroup>
 
         <InputGroup>
@@ -80,7 +100,7 @@ const RiseCalculator = () => {
       {result && temperature && (
         <ResultCard>
           <ResultTitle>Arvioitu kohotusaika:</ResultTitle>
-          <ResultGrid>
+          <ResultsGrid>
             <ResultItem>
               <ResultLabel>Aika:</ResultLabel>
               <ResultValue>{result.timing} tuntia</ResultValue>
@@ -95,7 +115,7 @@ const RiseCalculator = () => {
                 {result.celsius}°C / {result.fahrenheit}°F
               </ResultValue>
             </ResultItem>
-          </ResultGrid>
+          </ResultsGrid>
 
           <NotesCard>
             <NotesTitle>Huomioi:</NotesTitle>
@@ -119,164 +139,3 @@ const RiseCalculator = () => {
 }
 
 export default RiseCalculator
-
-const Section = styled.div`
-  margin-top: 2rem;
-  padding: 1.5rem;
-  background-color: rgb(245, 239, 217);
-  border: 1px solid rgb(231, 223, 198);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-  @media (max-width: 768px) {
-    padding: 1rem;
-  }
-`
-
-const SectionTitle = styled.h2`
-  color: rgb(139, 125, 91);
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
-
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-`
-
-const InputContainer = styled.div`
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 1rem;
-  }
-`
-
-const InputGroup = styled.div`
-  flex: 1;
-`
-
-const Label = styled.label`
-  display: block;
-  color: rgb(139, 125, 91);
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-`
-
-const InputWrapper = styled.div`
-  position: relative;
-`
-
-const Input = styled.input`
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #e7dfc6;
-  border-radius: 6px;
-  font-size: 1rem;
-  color: rgb(139, 125, 91);
-  background-color: white;
-
-  &:focus {
-    outline: none;
-    border-color: rgb(139, 125, 91);
-  }
-`
-
-const Select = styled.select`
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #e7dfc6;
-  border-radius: 6px;
-  font-size: 1rem;
-  color: rgb(139, 125, 91);
-  background-color: white;
-
-  &:focus {
-    outline: none;
-    border-color: rgb(139, 125, 91);
-  }
-`
-
-const ResultCard = styled.div`
-  background-color: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid #e7dfc6;
-
-  @media (max-width: 768px) {
-    padding: 1rem;
-  }
-`
-
-const ResultTitle = styled.h3`
-  color: rgb(139, 125, 91);
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-`
-
-const ResultGrid = styled.div`
-  display: grid;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-`
-
-const ResultItem = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid #e7dfc6;
-
-  &:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-`
-
-const ResultLabel = styled.span`
-  font-weight: 600;
-  color: rgb(139, 125, 91);
-`
-
-const ResultValue = styled.span`
-  color: rgb(139, 125, 91);
-`
-
-const NotesCard = styled.div`
-  background-color: rgb(255, 248, 232);
-  border: 1px solid #e7dfc6;
-  border-radius: 6px;
-  padding: 1rem;
-  margin-top: 1rem;
-`
-
-const NotesTitle = styled.h4`
-  color: rgb(139, 125, 91);
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-`
-
-const NotesList = styled.ul`
-  list-style-type: disc;
-  padding-left: 1.5rem;
-  color: rgb(139, 125, 91);
-`
-
-const NotesItem = styled.li`
-  margin-bottom: 0.25rem;
-  font-size: 0.95rem;
-`
-
-const ErrorMessage = styled.div`
-  color: #b71c1c;
-  text-align: center;
-  padding: 1rem;
-  background-color: #fdecea;
-  border-radius: 6px;
-  margin-top: 1rem;
-`

@@ -1,9 +1,24 @@
 import { useState } from 'react'
-import styled from 'styled-components'
 import { db } from '../../config/firebase'
 import { collection, addDoc, updateDoc, doc, serverTimestamp } from 'firebase/firestore'
 import { useAuth } from '../../contexts/AuthContext'
 import Notification from '../common/Notification'
+import { Form, InputGroup, Label, Input, TextArea } from '../../styles/components'
+import {
+  FormContainer,
+  FormWrapper,
+  FormHeader,
+  FormTitle,
+  CloseButton,
+  FormSection,
+  SectionTitle,
+  RatingContainer,
+  RatingButtons,
+  RatingButton,
+  ButtonContainer,
+  SubmitButton,
+  CancelButton,
+} from '../../styles/pages/recipes/RecipeFormStyles'
 
 const RecipeForm = ({ onClose, recipe, onSave }) => {
   const { user } = useAuth()
@@ -96,124 +111,126 @@ const RecipeForm = ({ onClose, recipe, onSave }) => {
 
   return (
     <FormContainer>
-      <Form onSubmit={handleSubmit}>
-        <Header>
-          <Title>{recipe ? 'Muokkaa reseptiä' : 'Lisää uusi resepti'}</Title>
+      <FormWrapper>
+        <FormHeader>
+          <FormTitle>{recipe ? 'Muokkaa reseptiä' : 'Lisää uusi resepti'}</FormTitle>
           <CloseButton onClick={onClose}>×</CloseButton>
-        </Header>
+        </FormHeader>
 
-        <FormSection>
-          <SectionTitle>Ainekset</SectionTitle>
+        <Form onSubmit={handleSubmit}>
+          <FormSection>
+            <SectionTitle>Ainekset</SectionTitle>
 
-          <InputGroup>
-            <Label>Jauhot (g)</Label>
-            <Input
-              type="number"
-              name="flourAmount"
-              value={formData.flourAmount}
+            <InputGroup>
+              <Label>Jauhot (g)</Label>
+              <Input
+                type="number"
+                name="flourAmount"
+                value={formData.flourAmount}
+                onChange={handleChange}
+                min="0"
+              />
+            </InputGroup>
+
+            <InputGroup>
+              <Label>Vesi (g)</Label>
+              <Input
+                type="number"
+                name="waterAmount"
+                value={formData.waterAmount}
+                onChange={handleChange}
+                min="0"
+              />
+            </InputGroup>
+
+            <InputGroup>
+              <Label>Hapanjuuri (g)</Label>
+              <Input
+                type="number"
+                name="starterAmount"
+                value={formData.starterAmount}
+                onChange={handleChange}
+                min="0"
+              />
+            </InputGroup>
+
+            <InputGroup>
+              <Label>Suola (g)</Label>
+              <Input
+                type="number"
+                name="saltAmount"
+                value={formData.saltAmount}
+                onChange={handleChange}
+                min="0"
+              />
+            </InputGroup>
+
+            <InputGroup>
+              <Label>Hydraatiotaso (%)</Label>
+              <Input
+                type="number"
+                name="hydrationLevel"
+                value={formData.hydrationLevel}
+                onChange={handleChange}
+                min="0"
+                max="100"
+              />
+            </InputGroup>
+
+            <InputGroup>
+              <Label>Kohotus aika (h)</Label>
+              <Input
+                type="number"
+                name="riseTime"
+                value={formData.riseTime}
+                onChange={handleChange}
+                min="0"
+                max="100"
+              />
+            </InputGroup>
+          </FormSection>
+
+          <FormSection>
+            <SectionTitle>Arviointi</SectionTitle>
+
+            <RatingContainer>
+              <Label>Onnistuminen (1-5)</Label>
+              <RatingButtons>
+                {[1, 2, 3, 4, 5].map(rating => (
+                  <RatingButton
+                    key={rating}
+                    type="button"
+                    $active={formData.rating === rating}
+                    onClick={() => setFormData(prev => ({ ...prev, rating }))}
+                  >
+                    {rating}
+                  </RatingButton>
+                ))}
+              </RatingButtons>
+            </RatingContainer>
+          </FormSection>
+
+          <FormSection>
+            <SectionTitle>Muistiinpanot</SectionTitle>
+            <TextArea
+              name="notes"
+              value={formData.notes}
               onChange={handleChange}
-              min="0"
+              placeholder="Kirjoita huomioita reseptistäsi..."
+              rows="4"
             />
-          </InputGroup>
+          </FormSection>
 
-          <InputGroup>
-            <Label>Vesi (g)</Label>
-            <Input
-              type="number"
-              name="waterAmount"
-              value={formData.waterAmount}
-              onChange={handleChange}
-              min="0"
-            />
-          </InputGroup>
-
-          <InputGroup>
-            <Label>Hapanjuuri (g)</Label>
-            <Input
-              type="number"
-              name="starterAmount"
-              value={formData.starterAmount}
-              onChange={handleChange}
-              min="0"
-            />
-          </InputGroup>
-
-          <InputGroup>
-            <Label>Suola (g)</Label>
-            <Input
-              type="number"
-              name="saltAmount"
-              value={formData.saltAmount}
-              onChange={handleChange}
-              min="0"
-            />
-          </InputGroup>
-
-          <InputGroup>
-            <Label>Hydraatiotaso (%)</Label>
-            <Input
-              type="number"
-              name="hydrationLevel"
-              value={formData.hydrationLevel}
-              onChange={handleChange}
-              min="0"
-              max="100"
-            />
-          </InputGroup>
-
-          <InputGroup>
-            <Label>Kohotus aika (h)</Label>
-            <Input
-              type="number"
-              name="riseTime"
-              value={formData.riseTime}
-              onChange={handleChange}
-              min="0"
-              max="100"
-            />
-          </InputGroup>
-        </FormSection>
-
-        <FormSection>
-          <SectionTitle>Arviointi</SectionTitle>
-
-          <RatingContainer>
-            <Label>Onnistuminen (1-5)</Label>
-            <RatingButtons>
-              {[1, 2, 3, 4, 5].map(rating => (
-                <RatingButton
-                  key={rating}
-                  type="button"
-                  $active={formData.rating === rating}
-                  onClick={() => setFormData(prev => ({ ...prev, rating }))}
-                >
-                  {rating}
-                </RatingButton>
-              ))}
-            </RatingButtons>
-          </RatingContainer>
-        </FormSection>
-
-        <FormSection>
-          <SectionTitle>Muistiinpanot</SectionTitle>
-          <TextArea
-            name="notes"
-            value={formData.notes}
-            onChange={handleChange}
-            placeholder="Kirjoita huomioita reseptistäsi..."
-            rows="4"
-          />
-        </FormSection>
-
-        <ButtonContainer>
-          <CancelButton type="button" onClick={onClose}>
-            Peruuta
-          </CancelButton>
-          <SubmitButton type="submit">
-            {recipe ? 'Päivitä resepti' : 'Tallenna resepti'}
-          </SubmitButton>
-        </ButtonContainer>
-      </Form>
+          <ButtonContainer>
+            <CancelButton type="button" onClick={onClose}>
+              Peruuta
+            </CancelButton>
+            <SubmitButton type="submit">
+              {recipe ? 'Päivitä resepti' : 'Tallenna resepti'}
+            </SubmitButton>
+          </ButtonContainer>
+        </Form>
+      </FormWrapper>
 
       {showNotification && (
         <Notification
@@ -227,195 +244,3 @@ const RecipeForm = ({ onClose, recipe, onSave }) => {
 }
 
 export default RecipeForm
-
-const FormContainer = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  padding: 1rem;
-`
-
-const Form = styled.form`
-  background-color: rgb(251, 249, 244);
-  padding: 2rem;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 500px;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-
-  @media (max-width: 768px) {
-    padding: 1.5rem;
-    border-radius: 8px;
-  }
-`
-
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid rgb(231, 223, 198);
-`
-
-const Title = styled.h2`
-  color: rgb(139, 125, 91);
-  font-size: 1.8rem;
-  margin: 0;
-  font-weight: 700;
-
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-  }
-`
-
-const CloseButton = styled.button`
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: rgb(139, 125, 91);
-  cursor: pointer;
-  padding: 0.5rem;
-  line-height: 1;
-
-  &:hover {
-    color: rgb(117, 106, 78);
-  }
-`
-
-const FormSection = styled.div`
-  margin-bottom: 2rem;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-`
-
-const SectionTitle = styled.h3`
-  color: rgb(139, 125, 91);
-  font-size: 1.2rem;
-  margin: 0 0 1rem 0;
-  font-weight: 600;
-`
-
-const InputGroup = styled.div`
-  margin-bottom: 1rem;
-`
-
-const Label = styled.label`
-  display: block;
-  color: rgb(139, 125, 91);
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-`
-
-const Input = styled.input`
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid rgb(231, 223, 198);
-  border-radius: 6px;
-  font-size: 1rem;
-  color: rgb(139, 125, 91);
-
-  &:focus {
-    outline: none;
-    border-color: rgb(139, 125, 91);
-  }
-`
-
-const RatingContainer = styled.div`
-  margin-bottom: 1rem;
-`
-
-const RatingButtons = styled.div`
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-`
-
-const RatingButton = styled.button`
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgb(139, 125, 91);
-  border-radius: 6px;
-  background-color: ${props => (props.$active ? 'rgb(139, 125, 91)' : 'transparent')};
-  color: ${props => (props.$active ? 'white' : 'rgb(139, 125, 91)')};
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background-color: ${props => (props.$active ? 'rgb(117, 106, 78)' : 'rgba(139, 125, 91, 0.1)')};
-  }
-`
-
-const TextArea = styled.textarea`
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid rgb(231, 223, 198);
-  border-radius: 6px;
-  font-size: 1rem;
-  color: rgb(139, 125, 91);
-  resize: vertical;
-
-  &:focus {
-    outline: none;
-    border-color: rgb(139, 125, 91);
-  }
-`
-
-const ButtonContainer = styled.div`
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`
-
-const Button = styled.button`
-  flex: 1;
-  padding: 0.75rem;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`
-
-const SubmitButton = styled(Button)`
-  background-color: rgb(139, 125, 91);
-  color: white;
-  border: none;
-
-  &:hover {
-    background-color: rgb(117, 106, 78);
-  }
-`
-
-const CancelButton = styled(Button)`
-  background-color: transparent;
-  color: rgb(139, 125, 91);
-  border: 1px solid rgb(139, 125, 91);
-
-  &:hover {
-    background-color: rgba(139, 125, 91, 0.1);
-  }
-`

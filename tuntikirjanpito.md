@@ -23,6 +23,10 @@
 | 3.3.  | 5    | Deploin kuntoon laitto raspi servulle.                                                           |
 | 4.3.  | 2    | Deploin parantelua                                                                               |
 |       | 6    | Tyylien refactorointia                                                                           |
+| 5.3.  | 5    | Tyylien refactorointia                                                                           |
+| 5.3.  | 2    | testaus                                                                                          |
+| 5.3.  | 2    | testaus                                                                                          |
+| 5.3.  | 2    | testaus                                                                                          |
 | 5.3.  | 2    | testaus                                                                                          |
 
 | yht | 00 | |
