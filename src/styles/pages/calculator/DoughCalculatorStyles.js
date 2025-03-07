@@ -133,10 +133,9 @@ export const StyledSlider = styled.input.attrs(props => ({
 export const Value = styled.span`
   position: absolute;
   right: 0;
-  top: -0.5rem;
+  top: -1.2rem;
   color: ${({ theme }) => theme.colors.text.primary};
   font-weight: 600;
-  font-size: 1.1rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 1rem;
