@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import Notification from '../common/Notification'
+import ThemeToggle from '../common/ThemeToggle'
 import {
   HeaderContainer,
   NavContainer,
@@ -13,6 +14,7 @@ import {
   NavLink,
   NavButton,
 } from '../../styles/components'
+import styled from 'styled-components'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -50,9 +52,15 @@ const Header = () => {
           <LogoText>Hapanjuuri ajastin</LogoText>
         </Logo>
 
-        <MobileMenuButton onClick={toggleMobileMenu}>
-          <span>☰</span>
-        </MobileMenuButton>
+        <HeaderActions>
+          <ThemeToggleWrapper>
+            <ThemeToggle />
+          </ThemeToggleWrapper>
+
+          <MobileMenuButton onClick={toggleMobileMenu}>
+            <span>☰</span>
+          </MobileMenuButton>
+        </HeaderActions>
 
         <Nav $isOpen={isMobileMenuOpen}>
           <NavLink
@@ -90,6 +98,12 @@ const Header = () => {
           >
             Info
           </NavLink>
+
+          <MobileThemeToggle>
+            <ThemeToggle />
+            <ThemeLabel>Vaihda teema</ThemeLabel>
+          </MobileThemeToggle>
+
           {user ? (
             <NavButton onClick={handleLogout}>Kirjaudu ulos</NavButton>
           ) : (
@@ -110,3 +124,33 @@ const Header = () => {
 }
 
 export default Header
+
+const HeaderActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+`
+
+const ThemeToggleWrapper = styled.div`
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    display: none;
+  }
+`
+
+const MobileThemeToggle = styled.div`
+  display: none;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+  padding: ${({ theme }) => theme.spacing(2)} 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    display: flex;
+  }
+`
+
+const ThemeLabel = styled.span`
+  font-size: 1.4rem;
+  color: ${({ theme }) => theme.colors.text.primary};
+`

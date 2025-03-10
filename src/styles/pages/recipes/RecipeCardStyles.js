@@ -41,7 +41,7 @@ export const Rating = styled.div`
 `
 
 export const Star = styled.span`
-  color: ${props => (props.$filled ? '#FFD700' : props.theme.colors.border)};
+  color: ${({ theme, $filled }) => ($filled ? '#FFD700' : theme.colors.border)};
   font-size: 1.2rem;
 `
 
@@ -78,13 +78,12 @@ export const ActionButton = styled.button`
   border: none;
   text-align: left;
   cursor: pointer;
-  color: ${props =>
-    props.$delete ? theme => theme.colors.error : theme => theme.colors.text.primary};
-  font-weight: ${props => (props.$delete ? '600' : '500')};
+  color: ${({ theme, $delete }) => ($delete ? theme.colors.error : theme.colors.text.primary)};
+  font-weight: ${({ $delete }) => ($delete ? '600' : '500')};
 
   &:hover {
-    background-color: ${props =>
-      props.$delete ? '#FDE8E8' : theme => theme.colors.background.card};
+    background-color: ${({ theme, $delete }) =>
+      $delete ? '#FDE8E8' : theme.colors.background.card};
   }
 
   &:not(:last-child) {

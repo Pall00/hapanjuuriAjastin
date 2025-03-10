@@ -24,7 +24,7 @@
 | 4.3.  | 2    | Deploin parantelua                                                                               |
 |       | 6    | Tyylien refactorointia                                                                           |
 | 5.3.  | 5    | Tyylien refactorointia                                                                           |
-| 5.3.  | 2    | testaus                                                                                          |
+| 10.3. | 7    | Darkmoden tekoa                                                                                  |
 | 5.3.  | 2    | testaus                                                                                          |
 | 5.3.  | 2    | testaus                                                                                          |
 | 5.3.  | 2    | testaus                                                                                          |
