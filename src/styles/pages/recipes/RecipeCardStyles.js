@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Card = styled.div`
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.background.paper};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   box-shadow: ${({ theme }) => theme.shadows.small};
   overflow: hidden;
@@ -62,7 +62,7 @@ export const ActionsMenu = styled.div`
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.background.paper};
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: ${({ theme }) => theme.borderRadius.small};
   box-shadow: ${({ theme }) => theme.shadows.small};
@@ -83,7 +83,7 @@ export const ActionButton = styled.button`
 
   &:hover {
     background-color: ${({ theme, $delete }) =>
-      $delete ? '#FDE8E8' : theme.colors.background.card};
+      $delete ? 'rgba(183, 28, 28, 0.1)' : theme.colors.background.card};
   }
 
   &:not(:last-child) {

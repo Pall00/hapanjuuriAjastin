@@ -71,7 +71,7 @@ export const SectionTitle = styled.h2`
 
 export const IngredientGroup = styled.div`
   margin-bottom: ${({ theme }) => theme.spacing(6)};
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.background.paper};
   padding: ${({ theme }) => theme.spacing(4)};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   box-shadow: ${({ theme }) => theme.shadows.small};
@@ -135,7 +135,7 @@ export const InstructionSteps = styled.div`
 `
 
 export const StepItem = styled.div`
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.background.paper};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   padding: ${({ theme }) => theme.spacing(6)};
   box-shadow: ${({ theme }) => theme.shadows.small};

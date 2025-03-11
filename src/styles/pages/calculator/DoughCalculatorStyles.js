@@ -160,6 +160,7 @@ export const NumberInput = styled.input`
   border-radius: ${({ theme }) => theme.borderRadius.small};
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.text.primary};
+  background-color: ${({ theme }) => theme.colors.background.paper};
   text-align: right;
 
   &:focus {
@@ -215,7 +216,8 @@ export const HydrationButtons = styled.div`
 `
 
 export const HydrationButton = styled.button`
-  background-color: ${props => (props.$active ? props.theme.colors.primary.main : 'white')};
+  background-color: ${props =>
+    props.$active ? props.theme.colors.primary.main : props.theme.colors.background.paper};
   color: ${props => (props.$active ? 'white' : props.theme.colors.primary.main)};
   border: 2px solid ${({ theme }) => theme.colors.primary.main};
   padding: ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(4)};

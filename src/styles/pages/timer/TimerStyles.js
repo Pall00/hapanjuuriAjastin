@@ -25,7 +25,7 @@ export const TimerSection = styled.div`
 export const TimerDisplay = styled.div`
   font-size: 4rem;
   font-weight: bold;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.background.paper};
   padding: ${({ theme }) => theme.spacing(6)} ${({ theme }) => theme.spacing(10)};
   border-radius: ${({ theme }) => theme.borderRadius.large};
   color: ${({ theme, $isRunning }) =>
@@ -140,16 +140,16 @@ export const StepCard = styled.div`
   justify-content: space-between;
   padding: ${({ theme }) => theme.spacing(4)};
   background-color: ${({ theme, $active }) =>
-    $active ? theme.colors.background.paper : '#F5F1E3'};
-  border: 1px solid ${({ theme, $active }) => ($active ? theme.colors.border : '#E7DFC6')};
+    $active ? theme.colors.background.paper : theme.colors.background.card};
+  border: 1px solid ${({ theme, $active }) => ($active ? theme.colors.border : theme.colors.border)};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   transition: all 0.2s ease;
 
   ${props =>
     props.$completed &&
     `
-    border-color: #A5D6A7;
-    background-color: #F1F8F1;
+    border-color: ${props.theme.colors.success};
+    background-color: ${props.theme.isDarkMode ? 'rgba(76, 175, 80, 0.2)' : '#F1F8F1'};
   `}
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
@@ -254,13 +254,15 @@ export const StepName = styled.div`
 
 export const CompleteButton = styled(Button)`
   padding: ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(4)};
-  background-color: ${({ theme, $completed }) => ($completed ? theme.colors.success : 'white')};
+  background-color: ${({ theme, $completed }) =>
+    $completed ? theme.colors.success : theme.colors.background.paper};
   color: ${({ theme, $completed }) => ($completed ? 'white' : theme.colors.success)};
   border: 2px solid ${({ theme }) => theme.colors.success};
   min-width: auto;
 
   &:hover {
-    background-color: ${({ $completed }) => ($completed ? '#43A047' : '#F1F8F1')};
+    background-color: ${({ $completed, theme }) =>
+      $completed ? '#43A047' : theme.colors.background.main};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {

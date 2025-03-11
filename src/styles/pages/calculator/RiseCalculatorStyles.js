@@ -82,7 +82,7 @@ export const Select = styled.select`
 `
 
 export const ResultCard = styled.div`
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.background.paper};
   padding: ${({ theme }) => theme.spacing(6)};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   border: 1px solid ${({ theme }) => theme.colors.border};

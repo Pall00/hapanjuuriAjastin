@@ -68,5 +68,12 @@ const darkTheme = {
   borderRadius: lightTheme.borderRadius,
 }
 
+export const extendTheme = (theme, isDarkMode) => {
+  return {
+    ...theme,
+    isDarkMode,
+  }
+}
+
 export { lightTheme, darkTheme }
 export default lightTheme

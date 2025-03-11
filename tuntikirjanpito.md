@@ -25,7 +25,7 @@
 |       | 6    | Tyylien refactorointia                                                                           |
 | 5.3.  | 5    | Tyylien refactorointia                                                                           |
 | 10.3. | 7    | Darkmoden tekoa                                                                                  |
-| 5.3.  | 2    | testaus                                                                                          |
+| 11.3. | 1    | Darkmoden viimeistelyä                                                                           |
 | 5.3.  | 2    | testaus                                                                                          |
 | 5.3.  | 2    | testaus                                                                                          |
 

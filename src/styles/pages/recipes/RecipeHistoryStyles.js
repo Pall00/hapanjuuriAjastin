@@ -105,7 +105,7 @@ export const RecipeGrid = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: ${({ theme }) => theme.spacing(6)};
   padding: ${({ theme }) => theme.spacing(4)};
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.background.main};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   min-height: 300px;
 

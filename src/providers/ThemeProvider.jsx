@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
-import { lightTheme, darkTheme } from '../styles/theme'
+import { lightTheme, darkTheme, extendTheme } from '../styles/theme'
 import ThemeContext from '../contexts/ThemeContext'
 
 const ThemeProvider = ({ children }) => {
@@ -38,7 +38,8 @@ const ThemeProvider = ({ children }) => {
     setIsDarkMode(prevMode => !prevMode)
   }
 
-  const theme = isDarkMode ? darkTheme : lightTheme
+  const baseTheme = isDarkMode ? darkTheme : lightTheme
+  const theme = extendTheme(baseTheme, isDarkMode)
 
   return (
     <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>

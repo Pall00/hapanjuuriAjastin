@@ -26,6 +26,7 @@ export const Input = styled.input`
   border-radius: ${({ theme }) => theme.borderRadius.small};
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.text.primary};
+  background-color: ${({ theme }) => theme.colors.background.paper};
 
   &:focus {
     outline: none;
@@ -40,6 +41,7 @@ export const TextArea = styled.textarea`
   border-radius: ${({ theme }) => theme.borderRadius.small};
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.text.primary};
+  background-color: ${({ theme }) => theme.colors.background.paper};
   resize: vertical;
 
   &:focus {
