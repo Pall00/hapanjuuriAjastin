@@ -13,8 +13,11 @@ import {
   Nav,
   NavLink,
   NavButton,
-} from '../../styles/components'
-import styled from 'styled-components'
+  HeaderActions,
+  ThemeToggleWrapper,
+  MobileThemeToggle,
+  ThemeLabel,
+} from '../../styles/components/'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -124,33 +127,3 @@ const Header = () => {
 }
 
 export default Header
-
-const HeaderActions = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 16px;
-`
-
-const ThemeToggleWrapper = styled.div`
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    display: none;
-  }
-`
-
-const MobileThemeToggle = styled.div`
-  display: none;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  justify-content: center;
-  padding: ${({ theme }) => theme.spacing(2)} 0;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    display: flex;
-  }
-`
-
-const ThemeLabel = styled.span`
-  font-size: 1.4rem;
-  color: ${({ theme }) => theme.colors.text.primary};
-`

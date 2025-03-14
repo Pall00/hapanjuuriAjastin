@@ -58,7 +58,7 @@ export const Input = styled.input`
   border-radius: ${({ theme }) => theme.borderRadius.small};
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.text.primary};
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.background.paper};
 
   &:focus {
     outline: none;
@@ -73,7 +73,7 @@ export const Select = styled.select`
   border-radius: ${({ theme }) => theme.borderRadius.small};
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.text.primary};
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.background.paper};
 
   &:focus {
     outline: none;
