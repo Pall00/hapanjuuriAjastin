@@ -14,9 +14,8 @@ import {
   NavLink,
   NavButton,
   HeaderActions,
-  ThemeToggleWrapper,
-  MobileThemeToggle,
-  ThemeLabel,
+  ThemeToggleContainer,
+  MobileThemeToggleContainer,
 } from '../../styles/components/'
 
 const Header = () => {
@@ -56,9 +55,9 @@ const Header = () => {
         </Logo>
 
         <HeaderActions>
-          <ThemeToggleWrapper>
+          <ThemeToggleContainer>
             <ThemeToggle />
-          </ThemeToggleWrapper>
+          </ThemeToggleContainer>
 
           <MobileMenuButton onClick={toggleMobileMenu}>
             <span>☰</span>
@@ -102,10 +101,9 @@ const Header = () => {
             Info
           </NavLink>
 
-          <MobileThemeToggle>
-            <ThemeToggle />
-            <ThemeLabel>Vaihda teema</ThemeLabel>
-          </MobileThemeToggle>
+          <MobileThemeToggleContainer>
+            <ThemeToggle showLabel={true} />
+          </MobileThemeToggleContainer>
 
           {user ? (
             <NavButton onClick={handleLogout}>Kirjaudu ulos</NavButton>
