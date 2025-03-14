@@ -27,6 +27,7 @@
 | 10.3. | 7    | Darkmoden tekoa                                                                                  |
 | 11.3. | 1    | Darkmoden viimeistelyä                                                                           |
 | 14.3. | 1    | Tyylien refactorointia                                                                           |
+|       | 4    | Lisätty lisä infot ajastimeen                                                                    |
 | 5.3.  | 2    | testaus                                                                                          |
 
 | yht | 00 | |
