@@ -1,1 +1,1 @@
-Helpottamaan hapanjuurileivän aikatauluttamisessa.
+Helpottamaan hapanjuurileivän valmistuksen aikatauluttamisessa.
