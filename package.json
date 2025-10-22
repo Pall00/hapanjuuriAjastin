@@ -13,7 +13,9 @@
     "preview": "vite preview",
     "fix": "npm run format && npm run lint:fix",
     "check": "npm run format:check && npm run lint",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "deploy": "npm run build && firebase deploy --only hosting",
+    "deploy:production": "npm run build && firebase deploy --only hosting"
   },
   "dependencies": {
     "date-fns": "^4.1.0",
