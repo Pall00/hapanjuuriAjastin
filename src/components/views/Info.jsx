@@ -5,7 +5,7 @@ const Info = () => {
   return (
     <Container>
       <Title>Info</Title>
-      <SubTitle>Tämän sivun tarkoitus on auttaa sinua hapanjuurileivän valmistuksessa.</SubTitle>
+      <SubTitle>Tämän sivun tarkoitus on auttaa sinua hapanjuurileivän valmistamisessa.</SubTitle>
     </Container>
   )
 }
