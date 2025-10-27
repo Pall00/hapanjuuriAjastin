@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import DoughCalculator from './components/views/DoughCalculator'
 import Guide from './components/views/Guide'
 import Timer from './components/views/Timer'
-import Info from './components/views/Info'
 import Auth from './components/auth/Auth'
 import RecipeHistory from './components/views/RecipeHistory'
 import { AuthProvider } from './contexts/AuthContext'
@@ -22,11 +21,10 @@ const App = () => {
               <Header />
             </Banner>
             <Routes>
-              <Route path="/laskuri" element={<DoughCalculator />} />
+              <Route path="/" element={<DoughCalculator />} />
               <Route path="/reseptit" element={<RecipeHistory />} />
               <Route path="/ohje" element={<Guide />} />
               <Route path="/ajastin" element={<Timer />} />
-              <Route path="/" element={<Info />} />
               <Route path="/auth" element={<Auth />} />
             </Routes>
           </Container>

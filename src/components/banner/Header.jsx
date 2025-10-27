@@ -67,7 +67,7 @@ const Header = () => {
         <Nav $isOpen={isMobileMenuOpen}>
           <NavLink
             to="/laskuri"
-            $isActive={location.pathname === '/laskuri'}
+            $isActive={location.pathname === '/'}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Laskuri
@@ -92,13 +92,6 @@ const Header = () => {
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Ohje
-          </NavLink>
-          <NavLink
-            to="/"
-            $isActive={location.pathname === '/'}
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Info
           </NavLink>
 
           <MobileThemeToggleContainer>

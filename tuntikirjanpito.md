@@ -29,5 +29,6 @@
 | 14.3.  | 1    | Tyylien refactorointia                                                                           |
 |        | 4    | Lisätty lisä infot ajastimeen                                                                    |
 | 22.10. | 4    | Deploy vaihdettu raspberrystä firebaseen                                                         |
+| 27.10. | 1    | Info poistettu ja kirjoitettu readme ohjeet                                                      |
 
-| yht | 00 | |
+| yht | 137 | |
