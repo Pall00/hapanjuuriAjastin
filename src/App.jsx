@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import Header from './components/banner/Header'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import DoughCalculator from './components/views/DoughCalculator'
 import Guide from './components/views/Guide'
 import Timer from './components/views/Timer'
@@ -21,11 +21,12 @@ const App = () => {
               <Header />
             </Banner>
             <Routes>
-              <Route path="/" element={<DoughCalculator />} />
+              <Route path="/laskuri" element={<DoughCalculator />} />
               <Route path="/reseptit" element={<RecipeHistory />} />
               <Route path="/ohje" element={<Guide />} />
               <Route path="/ajastin" element={<Timer />} />
               <Route path="/auth" element={<Auth />} />
+              <Route path="/" element={<Navigate to="/laskuri" replace />} />
             </Routes>
           </Container>
         </Router>
